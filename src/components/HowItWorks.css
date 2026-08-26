@@ -1,4 +1,4 @@
-/* ===== VERVVE WORKFLOW SECTION ===== */
+/* ===== WORKFLOW SECTION IN WHITE, RED & BLUE THEME ===== */
 .how-header {
   display: flex;
   flex-direction: column;
@@ -14,65 +14,64 @@
 }
 
 .how-card {
-  background: var(--d2);
-  border: 1px solid var(--gb);
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
   padding: 34px 28px;
-  border-radius: 4px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  transition: all 0.35s var(--ease);
-  position: relative;
+  transition: all 0.35s var(--ease-out);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
 }
 
 .how-card:hover {
-  background: var(--d3);
-  border-color: var(--g);
+  border-color: var(--brand-blue-border);
   transform: translateY(-5px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 0 20px rgba(201, 168, 76, 0.1);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06), 0 0 20px rgba(30, 64, 175, 0.08);
 }
 
 .how-card-num {
-  font-family: var(--font-serif);
-  font-size: 38px;
-  font-weight: 300;
-  color: var(--gl);
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--brand-blue);
   line-height: 1;
   margin-bottom: 14px;
 }
 
 .how-card-title {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: var(--td);
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
   margin-bottom: 10px;
 }
 
 .how-card-desc {
-  font-size: 13.5px;
-  color: var(--tm);
+  font-size: 14px;
+  color: var(--ink-soft);
   line-height: 1.62;
   margin-bottom: 22px;
   flex: 1;
 }
 
 .how-card-tag {
-  font-family: var(--font-sans);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--gl);
+  color: var(--brand-blue);
   padding-top: 14px;
-  border-top: 1px solid var(--gb);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 /* Bottom CTA Banner */
 .how-cta-banner {
-  background: var(--d2);
-  border: 1px solid var(--gb);
-  padding: 36px 44px;
-  border-radius: 4px;
+  background: var(--ground-alt);
+  border: 1.5px solid var(--brand-blue-border);
+  padding: 34px 44px;
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -80,16 +79,16 @@
 }
 
 .how-cta-text h4 {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: var(--td);
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
   margin-bottom: 4px;
 }
 
 .how-cta-text p {
-  font-size: 13.5px;
-  color: var(--tm);
+  font-size: 14px;
+  color: var(--ink-soft);
 }
 
 .how-cta-actions {
@@ -106,7 +105,7 @@
   .how-cta-banner {
     flex-direction: column;
     text-align: center;
-    padding: 30px 24px;
+    padding: 26px 20px;
   }
 
   .how-cta-actions {

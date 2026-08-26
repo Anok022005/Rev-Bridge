@@ -1,8 +1,8 @@
-/* ===== VERVVE DUAL PERSPECTIVE SECTION ===== */
+/* ===== DUAL PERSPECTIVE IN WHITE, RED & BLUE THEME ===== */
 .dual-sec {
-  background: var(--d1);
-  border-top: 1px solid var(--gb);
-  border-bottom: 1px solid var(--gb);
+  background: var(--ground-alt);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .dual-header {
@@ -16,44 +16,42 @@
 .dual-switch {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px;
-  background: var(--d2);
-  border: 1px solid var(--gb);
-  border-radius: 4px;
+  gap: 6px;
+  padding: 5px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 999px;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .dual-switch-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 22px;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--tm);
+  padding: 11px 24px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
   background: transparent;
   border: none;
   cursor: pointer;
-  border-radius: 2px;
-  transition: all 0.25s var(--ease);
+  border-radius: 999px;
+  transition: all 0.25s var(--ease-out);
   white-space: nowrap;
 }
 
 .dual-switch-btn:hover {
-  color: var(--gl);
+  color: var(--brand-blue);
 }
 
 .dual-switch-btn.active {
-  background: var(--g);
-  color: var(--ink);
-  font-weight: 600;
-  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.35);
+  background: var(--brand-blue);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(30, 64, 175, 0.25);
 }
 
 /* Cards Grid */
@@ -65,43 +63,43 @@
 }
 
 .dual-feature-card {
-  background: var(--d2);
-  border: 1px solid var(--gb);
-  padding: 32px 26px;
-  border-radius: 4px;
-  transition: all 0.35s var(--ease);
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 34px 28px;
+  border-radius: 20px;
+  transition: all 0.35s var(--ease-out);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
 }
 
 .dual-feature-card:hover {
-  background: var(--d3);
-  border-color: var(--g);
+  border-color: var(--brand-blue-border);
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(201, 168, 76, 0.1);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06), 0 0 20px rgba(30, 64, 175, 0.08);
 }
 
 .dual-feature-num {
-  font-family: var(--font-serif);
-  font-size: 32px;
-  font-weight: 300;
-  color: var(--gl);
+  font-family: var(--font-body);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--brand-blue);
   line-height: 1;
   margin-bottom: 14px;
 }
 
 .dual-feature-title {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: var(--td);
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
   margin-bottom: 10px;
   line-height: 1.2;
 }
 
 .dual-feature-desc {
-  font-size: 13.5px;
-  color: var(--tm);
+  font-size: 14px;
+  color: var(--ink-soft);
   line-height: 1.62;
   margin-bottom: 20px;
   flex: 1;
@@ -110,21 +108,21 @@
 .dual-feature-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
   padding-top: 16px;
-  border-top: 1px solid var(--gb);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .dual-feature-list li {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12.5px;
-  color: var(--td);
+  font-size: 13px;
+  color: var(--ink);
 }
 
 .dual-feature-list svg {
-  color: var(--g);
+  color: var(--brand-red);
   flex-shrink: 0;
 }
 

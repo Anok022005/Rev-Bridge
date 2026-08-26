@@ -1,9 +1,9 @@
-/* ===== VERVVE FOOTER TEMPLATE ===== */
+/* ===== FOOTER IN WHITE, RED & BLUE THEME ===== */
 .footer {
-  background: var(--ink);
-  border-top: 1px solid var(--gb);
+  background: #ffffff;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
   padding: clamp(60px, 9vh, 90px) 0 32px;
-  color: var(--td);
+  color: var(--ink);
 }
 
 .footer-top {
@@ -26,8 +26,9 @@
   height: 40px;
   border-radius: 8px;
   background: #ffffff;
-  padding: 3px;
-  border: 1px solid var(--gb);
+  padding: 2px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
 }
 
 .footer-logo-img {
@@ -37,50 +38,53 @@
 }
 
 .footer-logo-name {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-weight: 300;
-  letter-spacing: 5px;
-  color: var(--gl);
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--ink);
   text-transform: uppercase;
   line-height: 1;
 }
 
 .footer-logo-sub {
-  font-family: var(--font-sans);
-  font-size: 8.5px;
-  letter-spacing: 2.5px;
+  font-family: var(--font-body);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--tm);
+  color: var(--brand-blue);
   margin-top: 2px;
 }
 
 .footer-about-text {
-  font-size: 13px;
-  color: var(--tm);
+  font-size: 13.5px;
+  color: var(--ink-soft);
   line-height: 1.65;
   margin-bottom: 18px;
 }
 
 .footer-slogan {
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-style: italic;
-  color: var(--td);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
 }
 
 .footer-slogan em {
-  color: var(--gl);
+  font-style: normal;
+  color: var(--brand-blue);
+  font-weight: 700;
 }
 
 /* Col Titles */
 .footer-col-title {
-  font-family: var(--font-sans);
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--gl);
+  color: var(--ink);
   margin-bottom: 20px;
 }
 
@@ -92,10 +96,10 @@
 
 .footer-links a,
 .footer-link-btn {
-  font-size: 13px;
-  color: var(--tm);
+  font-size: 13.5px;
+  color: var(--ink-soft);
   text-decoration: none;
-  transition: color 0.25s;
+  transition: color 0.2s;
   background: none;
   border: none;
   padding: 0;
@@ -105,7 +109,7 @@
 
 .footer-links a:hover,
 .footer-link-btn:hover {
-  color: var(--gl);
+  color: var(--brand-blue);
 }
 
 /* Contact List */
@@ -122,40 +126,41 @@
 }
 
 .footer-contact-icon {
-  color: var(--g);
+  color: var(--brand-blue);
   flex-shrink: 0;
   margin-top: 3px;
 }
 
 .footer-contact-text {
-  font-size: 13px;
-  color: var(--td);
+  font-size: 13.5px;
+  color: var(--ink-soft);
   line-height: 1.55;
 }
 
 .footer-contact-text strong {
-  font-family: var(--font-sans);
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--gl);
+  color: var(--ink);
   display: inline-block;
   margin-bottom: 2px;
 }
 
 .footer-contact-link {
-  color: var(--td);
+  color: var(--brand-blue);
   text-decoration: none;
+  font-weight: 600;
   transition: color 0.2s;
 }
 
 .footer-contact-link:hover {
-  color: var(--gl);
+  color: var(--brand-red);
 }
 
 .footer-contact-sep {
-  color: var(--tm);
+  color: var(--ink-faint);
 }
 
 /* Footer Bottom Bar */
@@ -165,16 +170,15 @@
   justify-content: space-between;
   gap: 16px;
   padding-top: 24px;
-  border-top: 1px solid rgba(201, 168, 76, 0.12);
-  font-size: 12px;
-  color: var(--tm);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  font-size: 12.5px;
+  color: var(--ink-soft);
   flex-wrap: wrap;
 }
 
 .footer-tagline-bottom {
-  font-family: var(--font-serif);
-  font-style: italic;
-  color: rgba(240, 232, 216, 0.7);
+  font-family: var(--font-body);
+  color: var(--ink-faint);
 }
 
 @media (max-width: 1024px) {
