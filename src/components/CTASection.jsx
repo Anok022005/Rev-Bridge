@@ -1,49 +1,56 @@
 import React from 'react'
-import { ArrowRight, Building2, CalendarCheck, PhoneCall, Sparkles } from 'lucide-react'
+import { Phone, Mail, MapPin, Building2, CalendarCheck, ArrowRight } from 'lucide-react'
 import './CTASection.css'
 
 export default function CTASection({ onOpenModal }) {
   return (
-    <section className="cta-section">
-      <div className="shell">
-        <div className="cta-card">
-          <div className="cta-card__badge">
-            <Sparkles size={13} />
-            <span>START THE CONVERSATION</span>
-          </div>
-
-          <h2 className="cta-card__title">
-            Grow Your Hotel's Sales Reach Or <br />Book Your Next Luxury Experience
+    <section className="sec sec-dark cta-sec" id="inquire">
+      <div className="con">
+        <div className="cta-box">
+          <div className="lbl c">Direct Inquiries &amp; Alliances</div>
+          <h2 className="ttl" style={{ textAlign: 'center', color: '#ffffff' }}>
+            Elevate Your Resort Sales or <em>Plan Your Next Luxury Stay</em>
           </h2>
-
-          <p className="cta-card__sub">
-            Whether you own a luxury resort seeking dedicated commercial sales representation or you are
-            planning a corporate retreat, wedding, or vacation — RevBridge is here to assist you directly.
+          <div className="gbar c" />
+          <p className="sub" style={{ textAlign: 'center', margin: '0 auto 36px', color: 'rgba(240, 232, 216, 0.85)' }}>
+            Speak directly with our commercial leadership team at our Pune corporate sales office or submit
+            your group inquiry online.
           </p>
 
-          <div className="cta-card__actions">
+          <div className="cta-actions">
             <button
               type="button"
-              className="btn-gold"
+              className="btn-g"
               onClick={() => onOpenModal('hotel')}
             >
-              <Building2 size={18} />
-              <span>Partner Your Property (Hotel Owners)</span>
-              <ArrowRight size={16} />
+              <Building2 size={15} />
+              <span>For Hotels: Partner With Us</span>
             </button>
-
             <button
               type="button"
-              className="btn-secondary cta-card__btn-alt"
+              className="btn-o"
               onClick={() => onOpenModal('booking')}
             >
-              <CalendarCheck size={18} />
-              <span>Book Listed Stays &amp; Offsites</span>
+              <CalendarCheck size={15} />
+              <span>For Guests: Book Listed Stays</span>
             </button>
           </div>
 
-          <div className="cta-card__footer-note">
-            <span>Direct Phone: <a href="tel:+917028027017" style={{ color: 'var(--gold)', textDecoration: 'none', fontWeight: 600 }}>+91 70280 27017</a> / <a href="tel:+919370872231" style={{ color: 'var(--gold)', textDecoration: 'none', fontWeight: 600 }}>+91 93708 72231</a></span> • <span>Email: <a href="mailto:sales@revbridge.in" style={{ color: 'var(--gold)', textDecoration: 'none', fontWeight: 600 }}>sales@revbridge.in</a></span>
+          <div className="cta-quick-strip">
+            <a href="tel:+917028027017" className="cta-strip-item">
+              <Phone size={13} />
+              <span>+91 70280 27017</span>
+            </a>
+            <span className="cta-strip-sep">•</span>
+            <a href="tel:+919370872231" className="cta-strip-item">
+              <Phone size={13} />
+              <span>+91 93708 72231</span>
+            </a>
+            <span className="cta-strip-sep">•</span>
+            <a href="mailto:sales@revbridge.in" className="cta-strip-item">
+              <Mail size={13} />
+              <span>sales@revbridge.in</span>
+            </a>
           </div>
         </div>
       </div>

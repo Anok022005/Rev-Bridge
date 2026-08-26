@@ -1,359 +1,231 @@
 import React, { useState } from 'react'
-import {
-  MapPin,
-  Sparkles,
-  CheckCircle2,
-  Award,
-  ChevronRight,
-  ChevronLeft,
-  ArrowRight,
-  ExternalLink,
-  Camera
-} from 'lucide-react'
+import { MapPin, Users, Sparkles, Check, Phone, ArrowRight, ExternalLink, CalendarCheck } from 'lucide-react'
 import './PartnerShowcase.css'
 
-const PARTNER_HOTELS = [
+const PROPERTIES = [
   {
     id: 'aamby-valley',
-    number: '01',
-    name: 'Aamby Valley City & Luxury Resort',
-    tagline: '10,000-Acre Integrated Mountain Township & Luxury Accommodations',
-    location: 'Sahyadri Mountains, Lonavala / Pune, Maharashtra',
-    category: 'Ultra-Luxury Mountain Township',
-    websiteUrl: 'https://www.aambyvalley.com/accommodations.html',
-    photos: [
-      {
-        title: 'Burmese Chalets (Hilltop Solitude)',
-        url: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80'
-      },
-      {
-        title: 'Spanish & Swiss Hillside Cottages',
-        url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80'
-      },
-      {
-        title: 'Waterfront Cabana with Plunge Pool',
-        url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80'
-      },
-      {
-        title: 'Hermitage 180° VIP Mountain Villas',
-        url: 'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80'
-      }
+    name: 'Aamby Valley City',
+    tagline: '10,000-Acre Master Planned Luxury Resort Township',
+    location: 'Lonavala, Maharashtra',
+    category: 'Luxury Township & MICE Destination',
+    destTag: 'Lonavala',
+    eventTags: ['Corporate MICE', 'Weddings', 'Luxury Stays'],
+    images: [
+      'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80'
     ],
-    tags: ['10,000 Acres', 'Burmese Chalets', 'Spanish Cottages', 'Waterfront Cabanas'],
-    description:
-      'Spanning 10,000 pristine acres in the Sahyadri mountains with views of Koraigarh Fort. Features hilltop Burmese chalets, Spanish forest cottages, Swiss cottages with private gardens, Aussie pinewood suites, and waterfront cabanas on stilts with plunge pools.',
-    highlights: [
-      'Burmese Chalets — Hilltop Mountain Solitude',
-      'Spanish & Swiss Cottages with Private Gardens',
-      'Waterfront Cabanas with Private Plunge Pool',
-      'Hermitage Hilltop Suites with 180° Panoramic Views'
+    desc: 'India’s premier independent luxury township featuring timber chalets, Spanish cottages, 18-hole championship golf course, private airstrip, and world-class banquet convention arenas for grand offsites and weddings.',
+    amenities: [
+      '18-Hole Championship Golf Course',
+      'Private Airstrip & Helipads',
+      'Water Sports & Adventure Park',
+      'Over 10 Multi-Cuisine Restaurants',
+      'Convention Arenas for up to 3,000+ Guests'
     ],
-    impact: '+$6.4M Pipeline',
-    mandate: 'MICE, Destination Weddings & Leisure'
+    capacity: '50 to 3,000+ Delegates',
+    officialUrl: 'https://www.aambyvalley.com'
   },
   {
-    id: 'the-foresta',
-    number: '02',
-    name: 'The Foresta Resort Mulshi',
-    tagline: 'Secluded Rainforest Chalets & Private Pool Retreat',
-    location: 'Ravade Village, Paud, Mulshi Valley, Pune, Maharashtra',
-    category: 'Boutique Rainforest Retreat',
-    websiteUrl: 'https://www.theforesta.in',
-    photos: [
-      {
-        title: 'Infinity Pool & Mulshi Valley',
-        url: 'https://theforesta.in/wp-content/uploads/2026/03/imgi_51_00001-scaled-1.jpg'
-      },
-      {
-        title: 'Red Brick Private Pool Chalet',
-        url: 'https://theforesta.in/wp-content/uploads/2026/06/DSC07775-1-1024x576.webp'
-      },
-      {
-        title: 'Swiss Forest View Suite',
-        url: 'https://theforesta.in/wp-content/uploads/2026/06/KL_01807-1-1024x576.webp'
-      },
-      {
-        title: 'Event Lawns & Outdoor Dining',
-        url: 'https://theforesta.in/wp-content/uploads/2026/04/Foresta-2-1024x682.jpg'
-      }
+    id: 'the-foresta-mulshi',
+    name: 'The Foresta Resort',
+    tagline: 'Eco-Luxury Nature Sanctuary & Corporate Retreat',
+    location: 'Mulshi, Pune Outskirts, Maharashtra',
+    category: 'Nature Retreat & Private Offsites',
+    destTag: 'Mulshi',
+    eventTags: ['Corporate MICE', 'Weddings', 'Luxury Stays'],
+    images: [
+      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1200&q=80'
     ],
-    tags: ['Private Pool Chalets', '$280–$750 ADR', 'C-Suite Offsites', 'Mulshi Rainforest'],
-    description:
-      'Bespoke boutique resort nestled in the Mulshi rainforest. Celebrated for private pool chalets, panoramic mountain balconies, and lush event lawns dedicated to C-suite offsites and luxury staycations.',
-    highlights: [
-      'Red Brick Private Pool Chalets (Exclusive)',
-      'Swiss Mountain View Balcony Suites',
-      'Forest Canopy Valley Rooms',
-      'Open-Air Banquet & Event Lawns'
+    desc: 'Nestled amidst the lush valleys and tranquil waters of Mulshi, The Foresta Resort offers serene lake-view suites, open manicured lawns, state-of-the-art corporate boardrooms, and organic farm-to-table dining.',
+    amenities: [
+      'Scenic Mulshi Lake View Cottages',
+      'Infinity Pool overlooking Western Ghats',
+      'Acoustic Corporate Boardrooms',
+      'Lawn Capacity for 500+ Guests',
+      'Curated Trekking & Wellness Trails'
     ],
-    impact: '+42% RevPAR Surge',
-    mandate: 'Corporate Offsites & Leisure'
+    capacity: '20 to 500 Guests',
+    officialUrl: null
   },
   {
     id: 'meritas-countryside',
-    number: '03',
     name: 'Meritas Countryside Resort',
-    tagline: 'Tranquil Mid-Scale Resort with 31 Rooms, Pool & Open Lawns',
-    location: 'Nangargaon, Lonavala – 410401, Maharashtra, India',
-    category: 'Lonavala Boutique Resort',
-    websiteUrl: 'https://meritashotels.com/meritas-countryside-resort-lonavala/',
-    photos: [
-      {
-        title: 'Resort Pool & Garden Facade',
-        url: 'https://meritashotels.com/wp-content/uploads/2023/03/Countryside-resort-by-Meritas-Lonavala.jpg'
-      },
-      {
-        title: 'Deluxe Room Contemporary Suite',
-        url: 'https://meritashotels.com/wp-content/uploads/2023/03/Standard-Room-@-Countryside-resort-by-Meritas.jpg'
-      },
-      {
-        title: 'Classic Balcony Room',
-        url: 'https://meritashotels.com/wp-content/uploads/2023/03/Classic-@-Countryside-resort-by-Meritas.jpg'
-      },
-      {
-        title: 'Superior Suite & Lawns',
-        url: 'https://meritashotels.com/wp-content/uploads/2023/03/Standard-room...jpg'
-      }
+    tagline: 'Boutique Mountain Suites & Celebration Lawns',
+    location: 'Lonavala, Maharashtra',
+    category: 'Celebration Stays & Family Holidays',
+    destTag: 'Lonavala',
+    eventTags: ['Weddings', 'Corporate MICE', 'Luxury Stays'],
+    images: [
+      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80'
     ],
-    tags: ['31 Luxury Rooms', '4 Wings', 'Swimming Pool & Jacuzzi', 'Lonavala Valley'],
-    description:
-      'Situated in the serene, peaceful vicinity of Lonavala surrounded by lush greenery. Spread over 4 distinct wings with 31 rooms across Deluxe, Classic, and Superior categories, featuring a pool, jacuzzi, and multi-cuisine dining.',
-    highlights: [
-      '31 Boutique Rooms Across 4 Resort Wings',
-      'Swimming Pool & Relaxing Jacuzzi',
-      'Deluxe, Classic & Superior Room Categories',
-      'Multi-Cuisine Restaurant & In-Room Dining'
+    desc: 'A charming boutique resort in the heart of Lonavala with landscaped garden lawns, private balconies with valley vistas, poolside banquet decks, and quick highway accessibility from Mumbai and Pune.',
+    amenities: [
+      'Boutique Family & Executive Suites',
+      'Lush Landscaped Wedding Lawns',
+      'Multi-Cuisine Pure Veg & Non-Veg Dining',
+      'Poolside Sundeck & Lounge',
+      'Proximity to Lonavala Express Highway'
     ],
-    impact: '+38% Direct Booking Yield',
-    mandate: 'Leisure Groups & Offsites'
+    capacity: '15 to 350 Guests',
+    officialUrl: null
   }
 ]
 
+const FILTERS = ['All Properties', 'Lonavala', 'Mulshi', 'Corporate MICE', 'Weddings']
+
 export default function PartnerShowcase({ onOpenModal }) {
-  const [activeIdx, setActiveIdx] = useState(0)
-  const [activePhotoIdx, setActivePhotoIdx] = useState({ 0: 0, 1: 0, 2: 0 })
-  const total = PARTNER_HOTELS.length
+  const [activeFilter, setActiveFilter] = useState('All Properties')
+  const [activePhotoIdx, setActivePhotoIdx] = useState({
+    'aamby-valley': 0,
+    'the-foresta-mulshi': 0,
+    'meritas-countryside': 0
+  })
 
-  const handleNext = () => {
-    setActiveIdx((prev) => (prev + 1) % total)
-  }
+  const filteredProperties = PROPERTIES.filter((prop) => {
+    if (activeFilter === 'All Properties') return true
+    if (activeFilter === 'Lonavala' || activeFilter === 'Mulshi') {
+      return prop.destTag === activeFilter
+    }
+    return prop.eventTags.includes(activeFilter)
+  })
 
-  const handlePrev = () => {
-    setActiveIdx((prev) => (prev - 1 + total) % total)
-  }
-
-  const handleSelectPhoto = (hotelIndex, photoIndex, e) => {
-    e.stopPropagation()
-    setActivePhotoIdx((prev) => ({ ...prev, [hotelIndex]: photoIndex }))
+  const handlePhotoSelect = (propId, photoIdx) => {
+    setActivePhotoIdx((prev) => ({ ...prev, [propId]: photoIdx }))
   }
 
   return (
-    <section className="peek-showcase-section" id="portfolio">
-      <div className="shell">
-        {/* Top Header Row */}
-        <div className="peek-header">
-          <div className="peek-header__text">
-            <div className="badge-mono animate-float">
-              <Sparkles size={13} />
-              <span>COLLABORATED PROPERTIES</span>
-            </div>
-            <h2 className="section-title" style={{ marginTop: '14px' }}>
-              Luxury Resorts &amp; Hospitality Partners
-            </h2>
-            <p className="section-sub">
-              Verified luxury properties currently powered by RevBridge commercial sales leadership.
-            </p>
-          </div>
+    <section className="sec sec-dark" id="hotels">
+      <div className="con">
+        {/* Section Header */}
+        <div className="hotels-header">
+          <div className="lbl c">Curated Portfolio</div>
+          <h2 className="ttl" style={{ textAlign: 'center' }}>
+            Handpicked Luxury Resorts &amp; <em>Retreats</em>
+          </h2>
+          <div className="gbar c" />
+          <p className="sub" style={{ textAlign: 'center', margin: '0 auto 36px' }}>
+            Explore our curated collection of verified independent luxury resorts across Maharashtra.
+            Book directly through our Pune commercial desk with zero broker markup.
+          </p>
 
-          {/* Navigation Controls */}
-          <div className="peek-controls">
-            <div className="peek-counter">
-              <span className="peek-counter-curr">0{activeIdx + 1}</span>
-              <span className="peek-counter-sep">/</span>
-              <span className="peek-counter-total">0{total}</span>
-            </div>
-
-            <div className="peek-dots">
-              {PARTNER_HOTELS.map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  className={`peek-dot ${idx === activeIdx ? 'peek-dot--active' : ''}`}
-                  onClick={() => setActiveIdx(idx)}
-                  aria-label={`Jump to hotel ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            <div className="peek-arrows">
+          {/* Filter Bar */}
+          <div className="hotels-filter-bar">
+            {FILTERS.map((f) => (
               <button
+                key={f}
                 type="button"
-                className="peek-arrow-btn"
-                onClick={handlePrev}
-                aria-label="Previous Hotel"
+                className={`hotels-filter-btn ${activeFilter === f ? 'active' : ''}`}
+                onClick={() => setActiveFilter(f)}
               >
-                <ChevronLeft size={22} />
+                {f}
               </button>
-              <button
-                type="button"
-                className="peek-arrow-btn peek-arrow-btn--next"
-                onClick={handleNext}
-                aria-label="Next Hotel"
-              >
-                <ChevronRight size={22} />
-              </button>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
 
-      {/* Carousel Track with Glimpse/Peek of Adjacent Cards */}
-      <div className="peek-carousel-wrapper">
-        <div
-          className="peek-carousel-track"
-          style={{
-            transform: `translateX(calc(-${activeIdx} * (var(--card-width) + var(--card-gap))))`
-          }}
-        >
-          {PARTNER_HOTELS.map((hotel, idx) => {
-            const isActive = idx === activeIdx
-            const currentPhotoIndex = activePhotoIdx[idx] || 0
-            const currentPhoto = hotel.photos[currentPhotoIndex]
+        {/* Properties Grid */}
+        <div className="hotels-grid">
+          {filteredProperties.map((prop) => {
+            const currentImgIdx = activePhotoIdx[prop.id] || 0
+            const currentImgUrl = prop.images[currentImgIdx]
 
             return (
-              <div
-                key={hotel.id}
-                className={`peek-card ${isActive ? 'peek-card--active' : 'peek-card--inactive'}`}
-                onClick={() => !isActive && setActiveIdx(idx)}
-                role="button"
-                tabIndex={0}
-                aria-label={`View ${hotel.name}`}
-              >
-                {/* Peek overlay for inactive card */}
-                {!isActive && (
-                  <div className="peek-card__click-overlay">
-                    <span className="peek-card__click-hint">
-                      <span>Click to view</span>
-                      <ChevronRight size={14} />
-                    </span>
-                  </div>
-                )}
-
-                {/* Card Top Image & Photo Switcher */}
-                <div className="peek-card__image-wrap">
-                  <img
-                    key={currentPhoto.url}
-                    src={currentPhoto.url}
-                    alt={`${hotel.name} - ${currentPhoto.title}`}
-                    className="peek-card__img"
-                  />
-                  <div className="peek-card__image-scrim" />
+              <article key={prop.id} className="hotel-card">
+                {/* Top Image Box */}
+                <div className="hotel-img-box">
+                  <img src={currentImgUrl} alt={prop.name} className="hotel-img" />
+                  <div className="hotel-img-scrim" />
 
                   {/* Top Badges */}
-                  <div className="peek-card__img-badges">
-                    <span className="peek-card__num">{hotel.number}</span>
-                    <span className="peek-card__category">
-                      <Sparkles size={11} />
-                      {hotel.category}
+                  <div className="hotel-badges">
+                    <span className="hotel-dest-badge">
+                      <MapPin size={11} />
+                      {prop.location}
                     </span>
+                    <span className="hotel-cat-badge">{prop.category}</span>
                   </div>
 
-                  {/* Impact Metric Chip */}
-                  <div className="peek-card__impact">
-                    <Sparkles size={12} />
-                    <span>{hotel.impact}</span>
-                  </div>
-
-                  {/* Real Photo Thumbnail Switcher Bar on Image */}
-                  <div className="peek-card__photo-bar">
-                    <div className="peek-card__photo-caption">
-                      <Camera size={12} />
-                      <span>{currentPhoto.title}</span>
-                    </div>
-                    <div className="peek-card__photo-thumbs">
-                      {hotel.photos.map((photo, pIdx) => (
+                  {/* Photo Switcher Bar */}
+                  <div className="hotel-photo-bar">
+                    <span className="hotel-capacity">
+                      <Users size={12} />
+                      {prop.capacity}
+                    </span>
+                    <div className="hotel-thumbs">
+                      {prop.images.map((img, idx) => (
                         <button
-                          key={pIdx}
+                          key={idx}
                           type="button"
-                          className={`peek-card__photo-thumb ${pIdx === currentPhotoIndex ? 'active' : ''}`}
-                          onClick={(e) => handleSelectPhoto(idx, pIdx, e)}
-                          aria-label={`View photo: ${photo.title}`}
+                          className={`hotel-thumb ${idx === currentImgIdx ? 'active' : ''}`}
+                          onClick={() => handlePhotoSelect(prop.id, idx)}
+                          aria-label={`View photo ${idx + 1} of ${prop.name}`}
                         >
-                          <img src={photo.url} alt={photo.title} />
+                          <img src={img} alt="" />
                         </button>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="peek-card__body">
-                  <div className="peek-card__left">
-                    <div className="peek-card__location">
-                      <MapPin size={13} />
-                      <span>{hotel.location}</span>
+                {/* Card Content Body */}
+                <div className="hotel-body">
+                  <div className="hotel-title-row">
+                    <div>
+                      <h3 className="hotel-name">{prop.name}</h3>
+                      <div className="hotel-tagline">{prop.tagline}</div>
                     </div>
-
-                    <div className="peek-card__title-row">
-                      <h3 className="peek-card__title">{hotel.name}</h3>
-                      {hotel.websiteUrl && (
-                        <a
-                          href={hotel.websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="peek-card__site-link"
-                          onClick={(e) => e.stopPropagation()}
-                          title="Visit Official Property Website"
-                        >
-                          <span>Official Website</span>
-                          <ExternalLink size={13} />
-                        </a>
-                      )}
-                    </div>
-
-                    <p className="peek-card__tagline">{hotel.tagline}</p>
-
-                    <div className="peek-card__tags">
-                      {hotel.tags.map((tag, tIdx) => (
-                        <span key={tIdx} className="peek-card__tag">{tag}</span>
-                      ))}
-                    </div>
-
-                    <p className="peek-card__desc">{hotel.description}</p>
+                    {prop.officialUrl && (
+                      <a
+                        href={prop.officialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hotel-ext-link"
+                        title="Official Resort Portal"
+                      >
+                        <ExternalLink size={14} />
+                      </a>
+                    )}
                   </div>
 
-                  <div className="peek-card__right">
-                    <div className="peek-card__highlights">
-                      <div className="peek-card__highlights-title">Stay Highlights</div>
-                      {hotel.highlights.map((h, hIdx) => (
-                        <div key={hIdx} className="peek-card__highlight-row">
-                          <CheckCircle2 size={14} className="peek-card__check" />
-                          <span>{h}</span>
-                        </div>
-                      ))}
-                    </div>
+                  <p className="hotel-desc">{prop.desc}</p>
 
-                    <div className="peek-card__mandate">
-                      <Award size={15} className="peek-card__mandate-icon" />
-                      <span>{hotel.mandate}</span>
-                    </div>
+                  <div className="hotel-amenities-title">Resort Key Highlights</div>
+                  <ul className="hotel-amenities-list">
+                    {prop.amenities.map((amenity, i) => (
+                      <li key={i}>
+                        <Check size={14} className="amenity-check" />
+                        <span>{amenity}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                    <div className="peek-card__btn-group">
-                      <button
-                        type="button"
-                        className="btn-primary peek-card__cta"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onOpenModal('booking')
-                        }}
-                      >
-                        <span>Book &amp; Inquire Stay</span>
-                        <ArrowRight size={16} />
-                      </button>
-                    </div>
+                  {/* Card Bottom Actions */}
+                  <div className="hotel-card-actions">
+                    <button
+                      type="button"
+                      className="btn-book"
+                      onClick={() => onOpenModal('booking')}
+                    >
+                      <CalendarCheck size={13} />
+                      <span>Book Direct Rates</span>
+                    </button>
+                    <a
+                      href="tel:+917028027017"
+                      className="hotel-call-link"
+                      title="Direct Concierge Line"
+                    >
+                      <Phone size={13} />
+                      <span>+91 70280 27017</span>
+                    </a>
                   </div>
                 </div>
-              </div>
+              </article>
             )
           })}
         </div>

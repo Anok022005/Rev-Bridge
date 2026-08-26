@@ -1,43 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import {
-  X,
-  Building2,
-  CalendarCheck,
-  CheckCircle2,
-  ArrowRight,
-  Sparkles,
-  Phone,
-  Mail,
-  MapPin
-} from 'lucide-react'
+import { X, Building2, CalendarCheck, CheckCircle2, Phone, Mail, Sparkles, Send } from 'lucide-react'
 import './ConsultationModal.css'
 
-const PROPERTIES = [
-  'Aamby Valley City & Luxury Resort, Lonavala',
-  'The Foresta Resort Mulshi, Pune',
-  'Meritas Countryside Resort, Lonavala',
-  'Other / Multiple Properties'
-]
-
-export default function ConsultationModal({ isOpen, initialTrack = 'hotel', onClose }) {
-  const [track, setTrack] = useState(initialTrack) // 'hotel' or 'booking'
+export default function ConsultationModal({ isOpen, onClose, initialTrack = 'hotel' }) {
+  const [track, setTrack] = useState(initialTrack)
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
-    property: PROPERTIES[0],
-    hotelName: '',
-    hotelLocation: '',
-    roomCount: '',
-    stayDates: '',
-    guestCount: '',
-    eventType: 'Leisure Stay',
-    message: ''
+    email: '',
+    propertyOrCompany: '',
+    datesOrRequirement: '',
+    guestsCount: '15-50 Guests',
+    notes: ''
   })
 
   useEffect(() => {
-    setTrack(initialTrack === 'talent' ? 'booking' : initialTrack)
+    setTrack(initialTrack)
     setSubmitted(false)
   }, [initialTrack, isOpen])
 
@@ -57,253 +36,230 @@ export default function ConsultationModal({ isOpen, initialTrack = 'hotel', onCl
 
   if (!isOpen) return null
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setSubmitted(true)
   }
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-        {/* Close Button */}
-        <button type="button" className="modal-close-btn" onClick={onClose} aria-label="Close modal">
+    <div className="vmodal-overlay" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="vmodal-container" onClick={(e) => e.stopPropagation()}>
+        <button
+          type="button"
+          className="vmodal-close"
+          onClick={onClose}
+          aria-label="Close modal"
+        >
           <X size={20} />
         </button>
 
-        {submitted ? (
-          <div className="modal-success animate-fade-in">
-            <div className="modal-success__icon">
-              <CheckCircle2 size={42} />
-            </div>
-            <h3 className="modal-success__title">
-              {track === 'hotel' ? 'Collaboration Request Received' : 'Booking Inquiry Received'}
-            </h3>
-            <p className="modal-success__desc">
-              Thank you, <strong>{formData.name || 'Partner'}</strong>. Our commercial team has received your details.
-              We will contact you shortly via phone or email to assist you.
-            </p>
+        {!submitted ? (
+          <>
+            <div className="vmodal-header">
+              <div className="lbl">Direct Concierge Desk</div>
+              <h2 className="vmodal-title">
+                {track === 'hotel'
+                  ? 'Resort Commercial Partnership'
+                  : 'Inquire & Book Direct Resort Stays'}
+              </h2>
+              <div className="gbar" style={{ margin: '12px 0 16px' }} />
+              <p className="vmodal-sub">
+                {track === 'hotel'
+                  ? 'Connect with our Pune sales office to activate dedicated regional representation across Maharashtra and pan-India feeder markets.'
+                  : 'Get verified luxury resort rates, MICE banquet quotes, and wedding packages with zero intermediary markups.'}
+              </p>
 
-            <div className="modal-success__contact-box">
-              <span className="modal-success__contact-title">Need Immediate Assistance?</span>
-              <div className="modal-success__contact-links">
-                <a href="tel:+917028027017" className="modal-quick-link">
-                  <Phone size={14} />
+              {/* Quick direct contact strip inside modal */}
+              <div className="vmodal-direct-bar">
+                <span>Immediate Desk:</span>
+                <a href="tel:+917028027017" className="vmodal-direct-link">
+                  <Phone size={11} />
                   <span>+91 70280 27017</span>
                 </a>
-                <a href="tel:+919370872231" className="modal-quick-link">
-                  <Phone size={14} />
-                  <span>+91 93708 72231</span>
-                </a>
-                <a href="mailto:sales@revbridge.in" className="modal-quick-link">
-                  <Mail size={14} />
+                <span className="vmodal-direct-sep">•</span>
+                <a href="mailto:sales@revbridge.in" className="vmodal-direct-link">
+                  <Mail size={11} />
                   <span>sales@revbridge.in</span>
                 </a>
               </div>
             </div>
 
-            <button type="button" className="btn-primary" onClick={onClose} style={{ marginTop: '20px' }}>
-              Back to Website
-            </button>
-          </div>
-        ) : (
-          <div className="modal-content animate-fade-in">
-            {/* Header */}
-            <div className="modal-header">
-              <div className="badge-mono" style={{ alignSelf: 'flex-start', marginBottom: '8px' }}>
-                <Sparkles size={12} />
-                <span>DIRECT REVBRIDGE DESK</span>
-              </div>
-              <h2 className="modal-title">
-                {track === 'hotel' ? 'Partner Your Property' : 'Book a Partner Stay'}
-              </h2>
-              <p className="modal-sub">
-                {track === 'hotel'
-                  ? 'Collaborate with RevBridge for commercial sales representation, corporate offsites, and group bookings.'
-                  : 'Inquire directly for exclusive corporate retreats, weddings, or luxury leisure stays at our partner resorts.'}
-              </p>
-
-              {/* Quick Contact Bar */}
-              <div className="modal-direct-bar">
-                <span>Direct Inquiries:</span>
-                <a href="tel:+917028027017" className="modal-direct-link">
-                  <Phone size={12} /> +91 70280 27017
-                </a>
-                <a href="tel:+919370872231" className="modal-direct-link">
-                  <Phone size={12} /> +91 93708 72231
-                </a>
-                <a href="mailto:sales@revbridge.in" className="modal-direct-link">
-                  <Mail size={12} /> sales@revbridge.in
-                </a>
-              </div>
-            </div>
-
             {/* Track Switcher */}
-            <div className="modal-track-switch">
+            <div className="vmodal-switch">
               <button
                 type="button"
-                className={`modal-track-btn ${track === 'hotel' ? 'active' : ''}`}
+                className={`vmodal-switch-btn ${track === 'hotel' ? 'active' : ''}`}
                 onClick={() => setTrack('hotel')}
               >
-                <Building2 size={16} />
-                <span>For Hotel / Resort Owners</span>
+                <Building2 size={14} />
+                <span>Hotel Partnership</span>
               </button>
               <button
                 type="button"
-                className={`modal-track-btn ${track === 'booking' ? 'active' : ''}`}
+                className={`vmodal-switch-btn ${track === 'booking' ? 'active' : ''}`}
                 onClick={() => setTrack('booking')}
               >
-                <CalendarCheck size={16} />
-                <span>Book Listed Property</span>
+                <CalendarCheck size={14} />
+                <span>Guest / MICE Booking</span>
               </button>
             </div>
 
             {/* Form */}
-            <form className="modal-form" onSubmit={handleSubmit}>
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="modal-name">Your Full Name *</label>
+            <form className="vmodal-form" onSubmit={handleSubmit}>
+              <div className="vform-row">
+                <div className="vform-group">
+                  <label>Your Full Name *</label>
                   <input
-                    id="modal-name"
                     type="text"
                     name="name"
-                    placeholder="e.g. Rajesh Sharma"
+                    required
+                    placeholder="e.g. Rahul Sharma"
                     value={formData.name}
                     onChange={handleChange}
-                    required
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="modal-phone">Phone Number *</label>
+                <div className="vform-group">
+                  <label>Contact Phone Number *</label>
                   <input
-                    id="modal-phone"
                     type="tel"
                     name="phone"
+                    required
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={handleChange}
-                    required
                   />
                 </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="modal-email">Email Address *</label>
-                <input
-                  id="modal-email"
-                  type="email"
-                  name="email"
-                  placeholder="name@company.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+              <div className="vform-row">
+                <div className="vform-group">
+                  <label>Email Address *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="rahul@company.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="vform-group">
+                  <label>
+                    {track === 'hotel' ? 'Resort / Property Name *' : 'Company or Event Name *'}
+                  </label>
+                  <input
+                    type="text"
+                    name="propertyOrCompany"
+                    required
+                    placeholder={track === 'hotel' ? 'e.g. Mountain Villa Resort' : 'e.g. Infosys / Family Wedding'}
+                    value={formData.propertyOrCompany}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
 
-              {/* Fields for Hotel Owners */}
-              {track === 'hotel' && (
-                <div className="form-row animate-fade-in">
-                  <div className="form-group">
-                    <label htmlFor="modal-hotelName">Hotel / Resort Name *</label>
-                    <input
-                      id="modal-hotelName"
-                      type="text"
-                      name="hotelName"
-                      placeholder="e.g. Royal Valley Resort"
-                      value={formData.hotelName}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="modal-hotelLocation">Location &amp; Room Keys</label>
-                    <input
-                      id="modal-hotelLocation"
-                      type="text"
-                      name="hotelLocation"
-                      placeholder="e.g. Lonavala, 45 Keys"
-                      value={formData.hotelLocation}
-                      onChange={handleChange}
-                    />
-                  </div>
+              <div className="vform-row">
+                <div className="vform-group">
+                  <label>
+                    {track === 'hotel' ? 'Location & Room Inventory' : 'Approximate Dates & Destination'}
+                  </label>
+                  <input
+                    type="text"
+                    name="datesOrRequirement"
+                    placeholder={track === 'hotel' ? 'e.g. Lonavala • 45 Rooms' : 'e.g. Nov 15-18 • Lonavala / Mulshi'}
+                    value={formData.datesOrRequirement}
+                    onChange={handleChange}
+                  />
                 </div>
-              )}
-
-              {/* Fields for Booking Guests / Corporate Planners */}
-              {track === 'booking' && (
-                <div className="animate-fade-in">
-                  <div className="form-group">
-                    <label htmlFor="modal-property">Select Property *</label>
+                <div className="vform-group">
+                  <label>{track === 'hotel' ? 'Primary Need' : 'Estimated Group Size'}</label>
+                  {track === 'hotel' ? (
                     <select
-                      id="modal-property"
-                      name="property"
-                      value={formData.property}
+                      name="guestsCount"
+                      value={formData.guestsCount}
                       onChange={handleChange}
-                      className="modal-select"
+                      className="vmodal-select"
                     >
-                      {PROPERTIES.map((prop) => (
-                        <option key={prop} value={prop}>
-                          {prop}
-                        </option>
-                      ))}
+                      <option value="Pan-India Corporate Representation">Pan-India Corporate Representation</option>
+                      <option value="MICE & Group Sales Contracting">MICE &amp; Group Sales Contracting</option>
+                      <option value="Wedding & Banquet Pipeline">Wedding &amp; Banquet Pipeline</option>
+                      <option value="Full Commercial Advisory">Full Commercial Advisory</option>
                     </select>
-                  </div>
-
-                  <div className="form-row">
-                    <div className="form-group">
-                      <label htmlFor="modal-eventType">Inquiry Type</label>
-                      <select
-                        id="modal-eventType"
-                        name="eventType"
-                        value={formData.eventType}
-                        onChange={handleChange}
-                        className="modal-select"
-                      >
-                        <option value="Leisure Stay">Leisure Stay / Family Getaway</option>
-                        <option value="Corporate Offsite">Corporate Offsite / Conference</option>
-                        <option value="Destination Wedding">Destination Wedding / Event</option>
-                        <option value="Group Booking">Group Booking (10+ Rooms)</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="modal-stayDates">Dates &amp; Guest Count</label>
-                      <input
-                        id="modal-stayDates"
-                        type="text"
-                        name="stayDates"
-                        placeholder="e.g. Next weekend, ~25 guests"
-                        value={formData.stayDates}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
+                  ) : (
+                    <select
+                      name="guestsCount"
+                      value={formData.guestsCount}
+                      onChange={handleChange}
+                      className="vmodal-select"
+                    >
+                      <option value="15-50 Guests">15-50 Guests (Intimate Offsite)</option>
+                      <option value="50-150 Guests">50-150 Guests (Corporate Retreat)</option>
+                      <option value="150-500+ Guests">150-500+ Guests (Convention / Wedding)</option>
+                      <option value="Individual Family Vacation">Individual Family Vacation</option>
+                    </select>
+                  )}
                 </div>
-              )}
+              </div>
 
-              <div className="form-group">
-                <label htmlFor="modal-message">Requirements / Specific Notes</label>
+              <div className="vform-group">
+                <label>Specific Requirements or Questions (Optional)</label>
                 <textarea
-                  id="modal-message"
-                  name="message"
+                  name="notes"
                   rows="3"
-                  placeholder={
-                    track === 'hotel'
-                      ? 'Tell us about your property and what sales support you are looking for...'
-                      : 'Tell us your budget, number of rooms, meal requirements, or any special requests...'
-                  }
-                  value={formData.message}
+                  placeholder="Tell us any specific requirements (AV setup, banquet style, food preferences)..."
+                  value={formData.notes}
                   onChange={handleChange}
                 />
               </div>
 
-              <button type="submit" className="btn-primary modal-submit-btn">
-                <span>{track === 'hotel' ? 'Submit Collaboration Request' : 'Send Booking Inquiry'}</span>
-                <ArrowRight size={16} />
+              <button type="submit" className="btn-g vmodal-submit">
+                <Send size={14} />
+                <span>
+                  {track === 'hotel' ? 'Submit Partnership Request' : 'Request Direct Tariff Quote'}
+                </span>
               </button>
             </form>
+          </>
+        ) : (
+          /* Submission Success State */
+          <div className="vmodal-success">
+            <div className="vmodal-success-icon">
+              <CheckCircle2 size={48} />
+            </div>
+            <div className="lbl c">Inquiry Received</div>
+            <h3 className="vmodal-title" style={{ textAlign: 'center', marginBottom: '8px' }}>
+              Thank You, {formData.name || 'Valued Guest'}
+            </h3>
+            <p className="vmodal-sub" style={{ textAlign: 'center', marginBottom: '24px' }}>
+              Your inquiry has been routed to our Pune commercial sales desk. One of our dedicated account
+              managers will reach out to you within 2 hours with customized details.
+            </p>
+
+            <div className="vmodal-success-box">
+              <div className="vmodal-success-box-title">Need Immediate Coordination?</div>
+              <div className="vmodal-success-links">
+                <a href="tel:+917028027017" className="btn-g">
+                  <Phone size={13} />
+                  <span>Call +91 70280 27017</span>
+                </a>
+                <a
+                  href={`https://wa.me/917028027017?text=Hi%20RevBridge%2C%20I%20just%20submitted%20an%20inquiry%20under%20the%20name%20${encodeURIComponent(formData.name)}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-o"
+                >
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            <button type="button" className="btn-o" onClick={onClose} style={{ marginTop: '16px' }}>
+              <span>Close Window</span>
+            </button>
           </div>
         )}
       </div>

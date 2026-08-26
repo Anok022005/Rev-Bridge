@@ -1,161 +1,126 @@
 import React, { useState, useEffect } from 'react'
-import {
-  ArrowRight,
-  Building2,
-  CalendarCheck,
-  Phone,
-  Mail,
-  Sparkles,
-  ShieldCheck,
-  CheckCircle2
-} from 'lucide-react'
+import { ChevronLeft, ChevronRight, Sparkles, MapPin, Building2, CalendarCheck } from 'lucide-react'
 import './Hero.css'
 
+const SLIDES = [
+  {
+    id: 1,
+    title: 'Aamby Valley City',
+    tagline: '10,000-Acre Luxury Resort & Master Township',
+    location: 'Lonavala • Western Ghats, Maharashtra',
+    category: 'Curated Luxury Township & MICE Destination',
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85',
+    alt: 'Aamby Valley Luxury Resort'
+  },
+  {
+    id: 2,
+    title: 'The Foresta Resort',
+    tagline: 'Eco-Luxury Nature Sanctuary & Corporate Retreat',
+    location: 'Mulshi • Pune Outskirts, Maharashtra',
+    category: 'Private Lakeside Offsites & Weddings',
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=2000&q=85',
+    alt: 'The Foresta Resort Mulshi'
+  },
+  {
+    id: 3,
+    title: 'Meritas Countryside',
+    tagline: 'Boutique Mountain Suites & Event Lawns',
+    location: 'Lonavala • Khandala Valley, Maharashtra',
+    category: 'Celebration Stays & Family Holidays',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=85',
+    alt: 'Meritas Countryside Resort'
+  }
+]
+
 export default function Hero({ onOpenModal }) {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [curr, setCurr] = useState(0)
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      const { innerWidth, innerHeight } = window
-      const x = (e.clientX - innerWidth / 2) / 35
-      const y = (e.clientY - innerHeight / 2) / 35
-      setMousePos({ x, y })
-    }
-    window.addEventListener('mousemove', handleMouseMove, { passive: true })
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    const timer = setInterval(() => {
+      setCurr((prev) => (prev + 1) % SLIDES.length)
+    }, 6500)
+    return () => clearInterval(timer)
   }, [])
+
+  const nextSlide = () => {
+    setCurr((prev) => (prev + 1) % SLIDES.length)
+  }
+
+  const prevSlide = () => {
+    setCurr((prev) => (prev - 1 + SLIDES.length) % SLIDES.length)
+  }
 
   return (
     <section className="hero" id="overview">
-      {/* Ambient Warm Architectural Lighting */}
-      <div className="hero__backdrop" aria-hidden="true">
-        <div className="hero__glow-1" />
-        <div className="hero__glow-2" />
-        <div className="hero__glow-3" />
-      </div>
-
-      <div className="hero__container shell">
-        {/* Top Announcement Badge */}
-        <div className="hero__badge-wrapper animate-fade-in">
-          <div className="badge-mono animate-float hero__live-badge">
-            <span className="hero__live-dot" />
-            <Sparkles size={13} />
-            <span>HOSPITALITY SALES REPRESENTATION &amp; DIRECT BOOKING DESK</span>
-          </div>
-        </div>
-
-        {/* Core Headline with Floating Badges in the exact line of 'Sales Reach' */}
-        <h1 className="hero__title animate-fade-in">
-          Bridging Luxury Resorts with <br className="hero__title-br" />
-          <span className="hero__title-highlight">
-            High-Value Bookings
-            <span className="hero__highlight-shimmer" />
-          </span>{' '}
-          &amp; Pan-India <br className="hero__title-br" />
-          <div className="hero__reach-row">
-            {/* Left Floating Badge (Hotel Collaboration) */}
-            <div
-              className="hero__inline-badge hero__inline-badge--left"
-              style={{
-                transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`
-              }}
-            >
-              <div className="hero__float-icon hero__float-icon--gold">
-                <Building2 size={16} />
-              </div>
-              <div className="hero__float-content">
-                <div className="hero__float-val">Hotel Collaboration</div>
-                <div className="hero__float-lbl">Direct MICE &amp; Group Sales</div>
-              </div>
+      {SLIDES.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={`slide ${index === curr ? 'active' : ''}`}
+          aria-hidden={index !== curr}
+        >
+          <img src={slide.image} alt={slide.alt} className="simg" />
+          <div className="sov" />
+          <div className="sinf">
+            <div className="sbadge">
+              <span>{slide.category}</span>
             </div>
-
-            <span className="hero__reach-text">Sales Reach</span>
-
-            {/* Right Floating Badge (Direct Stay Bookings) */}
-            <div
-              className="hero__inline-badge hero__inline-badge--right"
-              style={{
-                transform: `translate(${-mousePos.x * 0.4}px, ${-mousePos.y * 0.4}px)`
-              }}
-            >
-              <div className="hero__float-icon hero__float-icon--dark">
-                <CalendarCheck size={16} />
-              </div>
-              <div className="hero__float-content">
-                <div className="hero__float-val">Direct Stay Bookings</div>
-                <div className="hero__float-lbl">Verified Luxury Rates</div>
-              </div>
+            <h1 className="shot">{slide.title}</h1>
+            <div className="sloc">
+              <MapPin size={13} />
+              <span>{slide.location}</span>
+            </div>
+            <p className="stagline">{slide.tagline}</p>
+            <div className="sbtns">
+              <button
+                type="button"
+                className="btn-g"
+                onClick={() => onOpenModal('booking')}
+              >
+                <CalendarCheck size={14} />
+                <span>Book This Resort</span>
+              </button>
+              <button
+                type="button"
+                className="btn-o"
+                onClick={() => onOpenModal('hotel')}
+              >
+                <Building2 size={14} />
+                <span>Hotel Owners: Partner With Us</span>
+              </button>
             </div>
           </div>
-        </h1>
-
-        {/* Subtitle addressing both Hotel Brands and Bookers */}
-        <p className="hero__sub animate-fade-in">
-          RevBridge represents independent resorts, mountain chalets, and hotel brands to accelerate direct
-          corporate retreats, weddings, and group stays — while offering corporate planners and guests seamless
-          direct booking assistance.
-        </p>
-
-        {/* Direct Contact Quick Pill */}
-        <div className="hero__quick-contact animate-fade-in">
-          <span className="hero__quick-label">Direct Inquiries &amp; Bookings:</span>
-          <div className="hero__quick-links">
-            <a href="tel:+917028027017" className="hero__contact-pill-link">
-              <Phone size={13} />
-              <span>+91 70280 27017</span>
-            </a>
-            <span className="hero__quick-sep">•</span>
-            <a href="tel:+919370872231" className="hero__contact-pill-link">
-              <Phone size={13} />
-              <span>+91 93708 72231</span>
-            </a>
-            <span className="hero__quick-sep">•</span>
-            <a href="mailto:sales@revbridge.in" className="hero__contact-pill-link">
-              <Mail size={13} />
-              <span>sales@revbridge.in</span>
-            </a>
-          </div>
         </div>
+      ))}
 
-        {/* Dual CTA Actions for the two user types */}
-        <div className="hero__actions animate-fade-in">
+      {/* Prev / Next Slide Arrows */}
+      <button
+        type="button"
+        className="sarr prev"
+        onClick={prevSlide}
+        aria-label="Previous Slide"
+      >
+        <ChevronLeft size={22} />
+      </button>
+      <button
+        type="button"
+        className="sarr next"
+        onClick={nextSlide}
+        aria-label="Next Slide"
+      >
+        <ChevronRight size={22} />
+      </button>
+
+      {/* Slide Indicators / Dots */}
+      <div className="sdots" role="tablist">
+        {SLIDES.map((_, idx) => (
           <button
+            key={idx}
             type="button"
-            className="btn-primary hero__btn hero__btn--glow"
-            onClick={() => onOpenModal('hotel')}
-          >
-            <Building2 size={18} />
-            <span>For Hotels: Partner With Us</span>
-            <ArrowRight size={16} className="hero__btn-arrow" />
-          </button>
-
-          <button
-            type="button"
-            className="btn-secondary hero__btn hero__btn--secondary"
-            onClick={() => onOpenModal('booking')}
-          >
-            <CalendarCheck size={18} />
-            <span>For Guests: Book Listed Stays</span>
-          </button>
-        </div>
-
-        {/* Trust Points Strip */}
-        <div className="hero__trust-strip animate-fade-in">
-          <div className="hero__trust-item">
-            <Building2 size={16} className="hero__trust-icon" />
-            <span>3+ Premier Partner Properties</span>
-          </div>
-          <div className="hero__trust-sep" aria-hidden="true">•</div>
-          <div className="hero__trust-item">
-            <ShieldCheck size={16} className="hero__trust-icon" />
-            <span>Pune Corporate Sales HQ</span>
-          </div>
-          <div className="hero__trust-sep" aria-hidden="true">•</div>
-          <div className="hero__trust-item">
-            <CheckCircle2 size={16} className="hero__trust-icon" />
-            <span>Direct Phone &amp; Email Support</span>
-          </div>
-        </div>
+            className={`sdot ${idx === curr ? 'on' : ''}`}
+            onClick={() => setCurr(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
       </div>
     </section>
   )

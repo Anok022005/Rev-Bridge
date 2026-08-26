@@ -1,203 +1,81 @@
-import React, { useState } from 'react'
-import {
-  Sparkles,
-  ShieldCheck,
-  Building2,
-  Check,
-  PhoneCall,
-  CalendarCheck,
-  MapPin,
-  Users
-} from 'lucide-react'
-import SpotlightCard from './SpotlightCard'
+import React from 'react'
+import { Briefcase, HeartHandshake, Sparkles, Building2, ArrowRight } from 'lucide-react'
 import './BentoGrid.css'
 
-const INQUIRY_SEGMENTS = [
+const SERVICES = [
   {
-    id: 'offsite',
-    label: 'Corporate Offsites & MICE',
-    desc: 'Annual conferences, leadership summits & team-building retreats',
-    typicalKeys: '20–100+ Rooms',
-    support: 'Custom banquets, conference AV & team activities'
+    num: '01',
+    title: 'Corporate Offsites & MICE',
+    desc: 'Turnkey conference planning, high-capacity convention halls, executive boardrooms, team-building activities, and residential group arrangements.',
+    highlights: ['Multi-Acre Arenas', 'Acoustic Boardrooms', 'Curated Team Activities', 'Corporate Billing Desk'],
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: 'wedding',
-    label: 'Destination Weddings',
-    desc: 'Grand lawn ceremonies, lakeside mandaps & full resort buyouts',
-    typicalKeys: '30–150+ Rooms',
-    support: 'Lawn decor tie-ups, catering coordination & hospitality desk'
+    num: '02',
+    title: 'Destination Weddings & Galas',
+    desc: 'Bespoke celebration venues with panoramic mountain vistas, open manicured lawns, luxury bridal suites, and tailored culinary arrangements.',
+    highlights: ['Lawn Capacity 1000+ Guests', 'Poolside Sangeet Decks', 'Luxury Room Blocks', 'Dedicated Event Manager'],
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: 'staycation',
-    label: 'Family & Luxury Staycations',
-    desc: 'Weekend chalets, private pool suites & peaceful nature getaways',
-    typicalKeys: '1–5 Chalets',
-    support: 'Guaranteed best direct rates & personalized check-in support'
+    num: '03',
+    title: 'Leisure Stays & Staycations',
+    desc: 'Direct reservations at premier hillside villas, scenic lakefront chalets, and family holiday resorts with exclusive property-direct perks.',
+    highlights: ['Zero Booking Fees', 'Verified Luxury Standards', 'Private Chalet Rentals', 'Complimentary Inclusions'],
+    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80'
   },
   {
-    id: 'csuite',
-    label: 'Executive Leadership Retreats',
-    desc: 'High-privacy hillside chalets with curated gourmet dining',
-    typicalKeys: '5–15 Suites',
-    support: 'Confidential meeting setups & dedicated butler services'
+    num: '04',
+    title: 'Commercial Representation',
+    desc: 'Active regional sales contracting, corporate corporate client engagement, and revenue leadership across Pune, Mumbai, and pan-India feeder markets.',
+    highlights: ['B2B Sales Outreach', 'Corporate RFP Pipeline', 'Rate Integrity Management', '0% Fixed Payroll Overhead'],
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80'
   }
 ]
 
 export default function BentoGrid({ onOpenModal }) {
-  const [selectedSegment, setSelectedSegment] = useState('offsite')
-  const currentSegment = INQUIRY_SEGMENTS.find((s) => s.id === selectedSegment) || INQUIRY_SEGMENTS[0]
-
   return (
-    <section className="bento-section" id="features">
-      <div className="shell">
-        <div className="bento-section__header">
-          <div className="badge-mono animate-float" style={{ margin: '0 auto 12px' }}>
-            <Sparkles size={13} />
-            <span>COMMERCIAL CAPABILITIES</span>
-          </div>
-          <h2 className="section-title">Dedicated Sales Power &amp; Guest Coordination</h2>
-          <p className="section-sub">
-            Bridging premier independent resorts with high-value corporate offsites, weddings, and seamless direct bookings.
+    <section className="sec sec-dark" id="services">
+      <div className="con">
+        <div className="services-header">
+          <div className="lbl c">Capabilities &amp; Solutions</div>
+          <h2 className="ttl" style={{ textAlign: 'center' }}>
+            Comprehensive <em>Hospitality Solutions</em>
+          </h2>
+          <div className="gbar c" />
+          <p className="sub" style={{ textAlign: 'center', margin: '0 auto 40px' }}>
+            From high-stakes leadership offsites to grand celebration weddings and commercial hotel growth,
+            RevBridge bridges every hospitality need with precision.
           </p>
         </div>
 
-        <div className="bento-grid">
-          {/* Card 1: Interactive Segment Selector (Span 2 Cols) */}
-          <SpotlightCard className="bento-card bento-card--large">
-            <div className="bento-card__badge">
-              <Building2 size={13} />
-              <span>COMMERCIAL SALES REPRESENTATION</span>
-            </div>
-
-            <div className="bento-card__content">
-              <h3 className="bento-card__title">Specialized Group Sales Across Key Segments</h3>
-              <p className="bento-card__desc">
-                We represent partner properties directly to corporate travel heads, event managers, and wedding planners,
-                securing high-margin group room blocks throughout the year.
-              </p>
-
-              {/* Interactive Segment Box */}
-              <div className="bento-interactive-box">
-                <div className="bento-box-label">EXPLORE SEGMENT SUPPORT:</div>
-                <div className="bento-filter-chips">
-                  {INQUIRY_SEGMENTS.map((segment) => (
-                    <button
-                      key={segment.id}
-                      type="button"
-                      className={`bento-chip ${selectedSegment === segment.id ? 'active' : ''}`}
-                      onClick={() => setSelectedSegment(segment.id)}
-                    >
-                      {segment.label}
-                    </button>
+        <div className="services-grid">
+          {SERVICES.map((svc) => (
+            <div key={svc.num} className="service-card">
+              <div className="service-card-img-wrap">
+                <img src={svc.image} alt={svc.title} className="service-card-img" />
+                <div className="service-card-img-scrim" />
+                <span className="service-card-num">{svc.num}</span>
+              </div>
+              <div className="service-card-body">
+                <h3 className="service-card-title">{svc.title}</h3>
+                <p className="service-card-desc">{svc.desc}</p>
+                <div className="service-card-tags">
+                  {svc.highlights.map((h, i) => (
+                    <span key={i} className="service-tag">{h}</span>
                   ))}
                 </div>
-
-                <div className="bento-match-result">
-                  <div className="bento-result-left">
-                    <span className="bento-result-tag">{currentSegment.label}</span>
-                    <h4 className="bento-result-name">{currentSegment.desc}</h4>
-                    <span className="bento-result-meta">
-                      Scope: {currentSegment.typicalKeys} • {currentSegment.support}
-                    </span>
-                  </div>
-                </div>
+                <button
+                  type="button"
+                  className="service-card-btn"
+                  onClick={() => onOpenModal('booking')}
+                >
+                  <span>Inquire Solution</span>
+                  <ArrowRight size={13} />
+                </button>
               </div>
             </div>
-          </SpotlightCard>
-
-          {/* Card 2: Direct Booking Desk */}
-          <SpotlightCard className="bento-card">
-            <div className="bento-card__badge">
-              <PhoneCall size={13} />
-              <span>DIRECT GUEST DESK</span>
-            </div>
-            <div className="bento-card__content">
-              <h3 className="bento-card__title">Personalized Call &amp; Email Booking Support</h3>
-              <p className="bento-card__desc">
-                Skip anonymous portals. Speak directly with our reservation desk in Pune for instant property recommendations and customized quotes.
-              </p>
-
-              <div className="bento-pipeline-mock">
-                <div className="bento-pipeline-row">
-                  <div className="bento-pipeline-status bento-pipeline-status--won">PHONE</div>
-                  <div className="bento-pipeline-text">
-                    <strong>+91 70280 27017</strong>
-                    <span>Direct Call Assistance</span>
-                  </div>
-                </div>
-
-                <div className="bento-pipeline-row">
-                  <div className="bento-pipeline-status bento-pipeline-status--won">EMAIL</div>
-                  <div className="bento-pipeline-text">
-                    <strong>sales@revbridge.in</strong>
-                    <span>Fast RFP &amp; Quote Response</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </SpotlightCard>
-
-          {/* Card 3: Transparent Partnership Assurance */}
-          <SpotlightCard className="bento-card">
-            <div className="bento-card__badge">
-              <ShieldCheck size={13} />
-              <span>AUTHENTIC ALLIANCE</span>
-            </div>
-            <div className="bento-card__content">
-              <h3 className="bento-card__title">Direct Collaboration &amp; Zero Hidden Fees</h3>
-              <p className="bento-card__desc">
-                We work as a transparent sales partner for hotel owners, and provide verified best rates directly for travelers and corporate organizers.
-              </p>
-
-              <div className="bento-escrow-list">
-                <div className="bento-escrow-item">
-                  <Check size={16} className="bento-check" />
-                  <span>Direct Property Management Rates</span>
-                </div>
-                <div className="bento-escrow-item">
-                  <Check size={16} className="bento-check" />
-                  <span>Dedicated Event &amp; Stay Coordinator</span>
-                </div>
-                <div className="bento-escrow-item">
-                  <Check size={16} className="bento-check" />
-                  <span>48-Hour Onboarding for New Hotels</span>
-                </div>
-              </div>
-            </div>
-          </SpotlightCard>
-
-          {/* Card 4: Key Corporate Feeder Hubs */}
-          <SpotlightCard className="bento-card bento-card--large">
-            <div className="bento-card__badge">
-              <MapPin size={13} />
-              <span>REGIONAL CORPORATE REACH</span>
-            </div>
-            <div className="bento-card__content">
-              <h3 className="bento-card__title">Active Commercial Channels Across Major Corporate Hubs</h3>
-              <p className="bento-card__desc">
-                RevBridge actively pitches partner resorts to enterprise clients, HR heads, and event organizers situated across Maharashtra and Western India.
-              </p>
-
-              <div className="bento-market-tags">
-                <div className="bento-market-tag">
-                  <span className="bento-market-city">Pune Tech &amp; Auto Corridors</span>
-                  <span className="bento-market-role">Hinjawadi, Kharadi, Magarpatta IT Parks</span>
-                </div>
-                <div className="bento-market-tag">
-                  <span className="bento-market-city">Mumbai Financial Hubs</span>
-                  <span className="bento-market-role">BKC, Lower Parel &amp; Andheri Commercial</span>
-                </div>
-                <div className="bento-market-tag">
-                  <span className="bento-market-city">Gujarat &amp; Western India</span>
-                  <span className="bento-market-role">Ahmedabad &amp; Surat Wedding Planners</span>
-                </div>
-                <div className="bento-market-tag">
-                  <span className="bento-market-city">Pan-India Corporate Desks</span>
-                  <span className="bento-market-role">Enterprise Offsites &amp; Summits</span>
-                </div>
-              </div>
-            </div>
-          </SpotlightCard>
+          ))}
         </div>
       </div>
     </section>

@@ -1,96 +1,49 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './CustomCursor.css'
 
 export default function CustomCursor() {
   const dotRef = useRef(null)
   const ringRef = useRef(null)
-  const [hovered, setHovered] = useState(false)
-  const [clicked, setClicked] = useState(false)
-  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    // Only enable for pointer devices (mice)
-    if (window.matchMedia('(pointer: coarse)').matches) return
+    const dot = dotRef.current
+    const ring = ringRef.current
+    if (!dot || !ring) return
 
-    let mouseX = -100
-    let mouseY = -100
-    let ringX = -100
-    let ringY = -100
+    let mouseX = window.innerWidth / 2
+    let mouseY = window.innerHeight / 2
+    let ringX = mouseX
+    let ringY = mouseY
 
     const handleMouseMove = (e) => {
       mouseX = e.clientX
       mouseY = e.clientY
-      if (!visible) setVisible(true)
-
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`
-      }
+      dot.style.left = `${mouseX}px`
+      dot.style.top = `${mouseY}px`
     }
 
-    const handleMouseDown = () => setClicked(true)
-    const handleMouseUp = () => setClicked(false)
-
-    const handleMouseOver = (e) => {
-      const target = e.target
-      if (
-        target.tagName === 'BUTTON' ||
-        target.tagName === 'A' ||
-        target.tagName === 'INPUT' ||
-        target.tagName === 'TEXTAREA' ||
-        target.closest('button') ||
-        target.closest('a') ||
-        target.closest('.bento-card') ||
-        target.closest('.perspective-card') ||
-        target.closest('.hero__showcase-glass') ||
-        target.classList.contains('bento-chip')
-      ) {
-        setHovered(true)
-      } else {
-        setHovered(false)
-      }
+    let animationId
+    const loop = () => {
+      ringX += (mouseX - ringX) * 0.18
+      ringY += (mouseY - ringY) * 0.18
+      ring.style.left = `${ringX}px`
+      ring.style.top = `${ringY}px`
+      animationId = requestAnimationFrame(loop)
     }
-
-    const handleMouseLeave = () => setVisible(false)
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true })
-    window.addEventListener('mousedown', handleMouseDown)
-    window.addEventListener('mouseup', handleMouseUp)
-    window.addEventListener('mouseover', handleMouseOver, { passive: true })
-    document.documentElement.addEventListener('mouseleave', handleMouseLeave)
-
-    // Smooth trailing ring lerp
-    let animId
-    const loop = () => {
-      ringX += (mouseX - ringX) * 0.16
-      ringY += (mouseY - ringY) * 0.16
-
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`
-      }
-      animId = requestAnimationFrame(loop)
-    }
-    animId = requestAnimationFrame(loop)
+    animationId = requestAnimationFrame(loop)
 
     return () => {
-      cancelAnimationFrame(animId)
       window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mousedown', handleMouseDown)
-      window.removeEventListener('mouseup', handleMouseUp)
-      window.removeEventListener('mouseover', handleMouseOver)
-      document.documentElement.removeEventListener('mouseleave', handleMouseLeave)
+      cancelAnimationFrame(animationId)
     }
-  }, [visible])
+  }, [])
 
   return (
-    <div className={`cursor-wrapper ${visible ? 'is-visible' : ''}`} aria-hidden="true">
-      <div
-        ref={dotRef}
-        className={`cursor-dot ${hovered ? 'is-hovered' : ''} ${clicked ? 'is-clicked' : ''}`}
-      />
-      <div
-        ref={ringRef}
-        className={`cursor-ring ${hovered ? 'is-hovered' : ''} ${clicked ? 'is-clicked' : ''}`}
-      />
-    </div>
+    <>
+      <div ref={dotRef} className="cur" aria-hidden="true" />
+      <div ref={ringRef} className="curr" aria-hidden="true" />
+    </>
   )
 }

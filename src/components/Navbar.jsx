@@ -1,134 +1,113 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowUpRight, Menu, X, CalendarCheck, Building2 } from 'lucide-react'
 import logoImg from '../assets/logo.jpg'
 import './Navbar.css'
 
-const NAV_LINKS = [
-  { label: 'Overview', href: '#overview' },
-  { label: 'Partner Properties', href: '#portfolio' },
-  { label: 'For Hotel Owners', href: '#hotels' },
-  { label: 'Book Stays & MICE', href: '#book-stays' },
-  { label: 'Why RevBridge', href: '#why-us' },
-  { label: 'Contact HQ', href: '#contact' }
-]
-
 export default function Navbar({ onOpenModal }) {
-  const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > 40)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [open])
+  }, [mobileOpen])
 
   return (
-    <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-      <div className="nav__inner shell">
-        {/* Unified Prismatic Glass Capsule: Logo + RevBridge + All Nav Links */}
-        <div className="nav__prismatic-capsule">
-          <a href="#top" className="nav__brand">
-            <img src={logoImg} alt="RevBridge Logo" className="nav__brand-logo" />
-            <span className="nav__brand-text">REVBRIDGE</span>
-          </a>
+    <>
+      <header className={`nav ${scrolled ? 'solid' : ''}`}>
+        {/* Brand Logo & Name */}
+        <a href="#overview" className="nlogo">
+          <div className="nlogo-img-wrap">
+            <img src={logoImg} alt="RevBridge Logo" className="nlogo-img" />
+          </div>
+          <div className="nlogo-text-group">
+            <div className="nln">RevBridge</div>
+            <div className="nls">Hospitality Solutions</div>
+          </div>
+        </a>
 
-          <span className="nav__brand-divider" aria-hidden="true" />
+        {/* Desktop Menu */}
+        <ul className="nmenu">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#hotels">Properties</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#partnership">For Hotels</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
 
-          <nav className="nav__rail" aria-label="Primary Navigation">
-            {NAV_LINKS.map((link, idx) => (
-              <span key={link.label} className="nav__slot">
-                {idx > 0 && <span className="nav__dot" aria-hidden="true" />}
-                <a href={link.href} className="nav__link">
-                  {link.label}
-                </a>
-              </span>
-            ))}
-          </nav>
-        </div>
-
-        {/* Independent Action Controls: Book a Stay + Partner Property */}
-        <div className="nav__actions">
-          <button 
-            type="button" 
-            className="nav__login" 
-            onClick={() => onOpenModal('booking')}
+        {/* Right CTA Button */}
+        <div className="nav-actions">
+          <button
+            type="button"
+            className="ncta"
+            onClick={() => onOpenModal('hotel')}
           >
-            <CalendarCheck size={14} />
-            <span>Book a Stay</span>
+            Partner With Us
+          </button>
+
+          {/* Mobile Hamburger Toggle */}
+          <button
+            type="button"
+            className={`ham ${mobileOpen ? 'open' : ''}`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle Menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Drawer Menu */}
+      <div className={`mob ${mobileOpen ? 'open' : ''}`}>
+        <button
+          type="button"
+          className="mobx"
+          onClick={() => setMobileOpen(false)}
+          aria-label="Close Navigation"
+        >
+          ✕
+        </button>
+        <a href="#overview" onClick={() => setMobileOpen(false)}>Overview</a>
+        <a href="#about" onClick={() => setMobileOpen(false)}>About Us</a>
+        <a href="#hotels" onClick={() => setMobileOpen(false)}>Curated Properties</a>
+        <a href="#services" onClick={() => setMobileOpen(false)}>Offerings &amp; MICE</a>
+        <a href="#partnership" onClick={() => setMobileOpen(false)}>For Hotel Owners</a>
+        <a href="#contact" onClick={() => setMobileOpen(false)}>Contact HQ</a>
+        <div className="mob-btns">
+          <button
+            type="button"
+            className="btn-g"
+            onClick={() => {
+              setMobileOpen(false)
+              onOpenModal('hotel')
+            }}
+          >
+            Partner With Us
           </button>
           <button
             type="button"
-            className="nav__cta"
-            onClick={() => onOpenModal('hotel')}
+            className="btn-o"
+            onClick={() => {
+              setMobileOpen(false)
+              onOpenModal('booking')
+            }}
           >
-            <Building2 size={14} />
-            <span>Partner With Us</span>
-            <ArrowUpRight size={14} />
+            Book A Stay
           </button>
         </div>
-
-        {/* Mobile Toggle */}
-        <button
-          type="button"
-          className="nav__toggle"
-          onClick={() => setOpen(!open)}
-          aria-expanded={open}
-          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
-
-      {/* Mobile Drawer Sheet */}
-      {open && (
-        <div className="nav__sheet">
-          <div className="nav__sheet-links">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="nav__sheet-link"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-          <div className="nav__sheet-actions">
-            <button
-              type="button"
-              className="btn-primary"
-              style={{ width: '100%' }}
-              onClick={() => {
-                setOpen(false)
-                onOpenModal('booking')
-              }}
-            >
-              Book Listed Properties
-            </button>
-            <button
-              type="button"
-              className="btn-secondary"
-              style={{ width: '100%', marginTop: '10px' }}
-              onClick={() => {
-                setOpen(false)
-                onOpenModal('hotel')
-              }}
-            >
-              Partner Your Property (Hotel Owners)
-            </button>
-          </div>
-        </div>
-      )}
-    </header>
+    </>
   )
 }

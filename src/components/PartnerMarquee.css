@@ -1,175 +1,52 @@
-/* ===== PARTNER MARQUEE (PURE WHITE + FROSTED GLASS CAPSULES IN RED & BLUE) ===== */
-.marquee-section {
-  padding: 32px 0 36px;
-  background: #ffffff;
-  border-top: 1px solid rgba(15, 23, 42, 0.06);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+/* ===== VERVVE TICKER MARQUEE ===== */
+.ticker {
+  background: var(--d2);
+  border-top: 1px solid var(--gb);
+  border-bottom: 1px solid var(--gb);
+  padding: 14px 0;
+  overflow: hidden;
   position: relative;
-  overflow: hidden;
-}
-
-.marquee-section__header {
-  text-align: center;
-  margin-bottom: 22px;
-}
-
-.marquee-section__label {
-  font-family: var(--font-body);
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--brand-blue);
-  line-height: 1.5;
-}
-
-/* Outer wrapper with edge gradient fade masks */
-.marquee-wrapper {
-  display: flex;
-  overflow: hidden;
   user-select: none;
-  position: relative;
-  width: 100%;
 }
 
-.marquee-wrapper::before,
-.marquee-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: clamp(50px, 10vw, 150px);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.marquee-wrapper::before {
-  left: 0;
-  background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
-}
-
-.marquee-wrapper::after {
-  right: 0;
-  background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
-}
-
-/* Continuous moving track */
-.marquee-track {
+.ttr {
   display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-shrink: 0;
-  animation: marqueeContinuous 38s linear infinite;
+  white-space: nowrap;
+  animation: tick 48s linear infinite;
   will-change: transform;
 }
 
-.marquee-track:hover {
+.ticker:hover .ttr {
   animation-play-state: paused;
 }
 
-/* Individual partner capsule */
-.marquee-card {
+@keyframes tick {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ti {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 8px 18px 8px 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(30, 64, 175, 0.18);
-  box-shadow:
-    0 4px 16px rgba(15, 23, 42, 0.04),
-    0 1px 3px rgba(15, 23, 42, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  flex-shrink: 0;
-  transition: all 0.25s var(--ease-out);
+  padding: 0 24px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: rgba(240, 232, 216, 0.75);
 }
 
-.marquee-card:hover {
-  background: #ffffff;
-  border-color: var(--brand-blue);
-  transform: translateY(-2px);
-  box-shadow:
-    0 8px 24px rgba(30, 64, 175, 0.16),
-    0 2px 6px rgba(15, 23, 42, 0.04);
-}
-
-.marquee-card__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
+.ti-dot {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: var(--brand-blue-light);
-  color: var(--brand-blue);
-  border: 1px solid var(--brand-blue-border);
+  background: var(--g);
+  box-shadow: 0 0 8px var(--gl);
   flex-shrink: 0;
-  transition: all 0.25s var(--ease-out);
-}
-
-.marquee-card:hover .marquee-card__icon {
-  background: var(--brand-red);
-  color: #ffffff;
-  border-color: var(--brand-red);
-  transform: rotate(6deg);
-}
-
-.marquee-card__info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  align-items: flex-start;
-}
-
-.marquee-card__name {
-  font-family: var(--font-body);
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--ink);
-  white-space: nowrap;
-  line-height: 1.25;
-}
-
-.marquee-card__type {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--brand-blue);
-  white-space: nowrap;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-}
-
-@keyframes marqueeContinuous {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-33.3333%);
-  }
-}
-
-@media (max-width: 640px) {
-  .marquee-section {
-    padding: 24px 0 28px;
-  }
-
-  .marquee-section__label {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-  }
-
-  .marquee-card {
-    padding: 6px 14px 6px 10px;
-    gap: 10px;
-  }
-
-  .marquee-card__name {
-    font-size: 12.5px;
-  }
-
-  .marquee-card__type {
-    font-size: 10px;
-  }
 }

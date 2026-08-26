@@ -1,226 +1,154 @@
 import React, { useState } from 'react'
-import {
-  Building2,
-  CalendarCheck,
-  CheckCircle2,
-  XCircle,
-  ArrowRight,
-  ShieldCheck,
-  Zap,
-  LineChart,
-  PhoneCall,
-  Sparkles,
-  Award
-} from 'lucide-react'
-import SpotlightCard from './SpotlightCard'
+import { Building2, CalendarCheck, Check, ArrowRight, ShieldCheck, TrendingUp, Users, DollarSign } from 'lucide-react'
 import './DualPerspective.css'
 
 export default function DualPerspective({ onOpenModal }) {
-  const [activeTab, setActiveTab] = useState('hotel') // 'hotel' or 'booking'
+  const [activeTab, setActiveTab] = useState('hotels')
 
   return (
-    <section className="dual-perspective" id="hotels">
-      <div className="shell">
-        <div className="dual-perspective__header">
-          <div className="badge-mono animate-float" style={{ margin: '0 auto 12px' }}>
-            <Sparkles size={13} />
-            <span>TAILORED HOSPITALITY SOLUTIONS</span>
-          </div>
-          <h2 className="section-title">Designed For Property Owners &amp; Direct Bookers</h2>
-          <p className="section-sub">
-            Whether you are a resort owner looking to expand corporate sales or a planner booking
-            luxury retreats across Maharashtra, RevBridge is your trusted bridge.
+    <section className="sec sec-dark dual-sec" id="partnership">
+      <div className="con">
+        <div className="dual-header">
+          <div className="lbl c">Two Tailored Tracks</div>
+          <h2 className="ttl" style={{ textAlign: 'center' }}>
+            Built for <em>Hotel Owners</em> &amp; <em>Corporate Bookers</em>
+          </h2>
+          <div className="gbar c" />
+          <p className="sub" style={{ textAlign: 'center', margin: '0 auto 36px' }}>
+            Whether you own an independent luxury resort seeking dedicated sales representation, or you are planning
+            a high-stakes corporate retreat, RevBridge delivers specialized commercial execution.
           </p>
 
-          {/* Interactive Switcher Pill */}
-          <div className="perspective-switch">
+          {/* Track Switcher */}
+          <div className="dual-switch">
             <button
               type="button"
-              className={`perspective-switch__btn ${activeTab === 'hotel' ? 'active' : ''}`}
-              onClick={() => setActiveTab('hotel')}
+              className={`dual-switch-btn ${activeTab === 'hotels' ? 'active' : ''}`}
+              onClick={() => setActiveTab('hotels')}
             >
-              <Building2 size={17} />
-              <span>For Hotels &amp; Resorts (Collaborate)</span>
+              <Building2 size={15} />
+              <span>For Hotel &amp; Resort Owners</span>
             </button>
             <button
               type="button"
-              className={`perspective-switch__btn ${activeTab === 'booking' ? 'active' : ''}`}
-              onClick={() => setActiveTab('booking')}
+              className={`dual-switch-btn ${activeTab === 'guests' ? 'active' : ''}`}
+              onClick={() => setActiveTab('guests')}
             >
-              <CalendarCheck size={17} />
-              <span>For Guests &amp; Corporate Bookers</span>
+              <CalendarCheck size={15} />
+              <span>For Corporate Planners &amp; Guests</span>
             </button>
           </div>
         </div>
 
-        {/* Dynamic Perspective Content */}
-        <div className="perspective-content">
-          {activeTab === 'hotel' ? (
-            <div className="perspective-pane animate-fade-in">
-              {/* Feature Grid for Hotels */}
-              <div className="perspective-grid">
-                <SpotlightCard className="perspective-card">
-                  <div className="perspective-card__icon-box">
-                    <Zap size={22} />
-                  </div>
-                  <h3 className="perspective-card__title">Pan-India Corporate &amp; MICE Reach</h3>
-                  <p className="perspective-card__desc">
-                    We actively represent your property across key corporate hubs in Pune and Mumbai,
-                    securing high-margin corporate offsites, annual conferences, and destination weddings.
-                  </p>
-                  <ul className="perspective-card__list">
-                    <li><CheckCircle2 size={15} /> Direct outreach to corporate event planners &amp; travel desks</li>
-                    <li><CheckCircle2 size={15} /> Proactive lead generation for off-season and weekday dates</li>
-                  </ul>
-                </SpotlightCard>
-
-                <SpotlightCard className="perspective-card">
-                  <div className="perspective-card__icon-box">
-                    <LineChart size={22} />
-                  </div>
-                  <h3 className="perspective-card__title">Direct Booking Focus &amp; ADR Lift</h3>
-                  <p className="perspective-card__desc">
-                    Reduce over-dependence on discounted OTA channels. We drive high-value direct inquiries
-                    that protect your property's average daily room rate (ADR) and profit margins.
-                  </p>
-                  <ul className="perspective-card__list">
-                    <li><CheckCircle2 size={15} /> Higher profit margins on direct group bookings</li>
-                    <li><CheckCircle2 size={15} /> Tailored room package strategies for luxury chalets &amp; suites</li>
-                  </ul>
-                </SpotlightCard>
-
-                <SpotlightCard className="perspective-card">
-                  <div className="perspective-card__icon-box">
-                    <ShieldCheck size={22} />
-                  </div>
-                  <h3 className="perspective-card__title">Dedicated Sales Representation</h3>
-                  <p className="perspective-card__desc">
-                    Gain a professional commercial representation team without the heavy overhead of hiring,
-                    training, and managing an internal multi-city sales force.
-                  </p>
-                  <ul className="perspective-card__list">
-                    <li><CheckCircle2 size={15} /> Flexible, performance-aligned partnership terms</li>
-                    <li><CheckCircle2 size={15} /> Transparent reporting on client inquiries and closed bookings</li>
-                  </ul>
-                </SpotlightCard>
+        {/* Tab Content 1: For Hotels */}
+        {activeTab === 'hotels' ? (
+          <div className="dual-content">
+            <div className="dual-card-grid">
+              <div className="dual-feature-card">
+                <div className="dual-feature-num">01</div>
+                <h3 className="dual-feature-title">Pan-India Sales Force</h3>
+                <p className="dual-feature-desc">
+                  We deploy an active B2B corporate sales presence across key feeder hubs including Pune, Mumbai, and Gujarat.
+                </p>
+                <ul className="dual-feature-list">
+                  <li><Check size={13} /> Active Corporate RFP representation</li>
+                  <li><Check size={13} /> MICE travel desk contracting</li>
+                  <li><Check size={13} /> Elite wedding planner network</li>
+                </ul>
               </div>
 
-              {/* Comparison Matrix for Hotels */}
-              <div className="perspective-matrix">
-                <div className="matrix-col matrix-col--bad">
-                  <h4 className="matrix-title">Traditional In-House Sales Hiring</h4>
-                  <ul className="matrix-list">
-                    <li><XCircle size={16} /> High fixed monthly salary &amp; travel overheads with uncertain ROI</li>
-                    <li><XCircle size={16} /> Limited to a single person's local contact radius</li>
-                    <li><XCircle size={16} /> Heavy time investment in hiring, onboarding, and monitoring</li>
-                    <li><XCircle size={16} /> Vulnerable to sudden staff attrition during peak season</li>
-                  </ul>
-                </div>
-
-                <div className="matrix-col matrix-col--good">
-                  <div className="matrix-badge">REVBRIDGE ALLIANCE</div>
-                  <h4 className="matrix-title">RevBridge Sales Representation</h4>
-                  <ul className="matrix-list">
-                    <li><CheckCircle2 size={16} /> Dedicated commercial team actively pitching your property</li>
-                    <li><CheckCircle2 size={16} /> Established corporate relationships across Maharashtra &amp; beyond</li>
-                    <li><CheckCircle2 size={16} /> Aligned incentives focused on real room nights &amp; banquet revenue</li>
-                    <li><CheckCircle2 size={16} /> Rapid onboarding and commercial strategy launch in 48 hours</li>
-                  </ul>
-                </div>
+              <div className="dual-feature-card">
+                <div className="dual-feature-num">02</div>
+                <h3 className="dual-feature-title">Zero Fixed Payroll Burden</h3>
+                <p className="dual-feature-desc">
+                  Replace expensive fixed regional sales teams and metro office overheads with a performance-driven revenue structure.
+                </p>
+                <ul className="dual-feature-list">
+                  <li><Check size={13} /> Immediate sales desk activation</li>
+                  <li><Check size={13} /> Transparent monthly performance reviews</li>
+                  <li><Check size={13} /> Focus on high ADR &amp; weekday occupancy</li>
+                </ul>
               </div>
 
-              {/* Bottom CTA */}
-              <div className="perspective-bottom-cta">
-                <button type="button" className="btn-primary" onClick={() => onOpenModal('hotel')}>
-                  <span>Partner Your Property with RevBridge</span>
-                  <ArrowRight size={16} />
-                </button>
+              <div className="dual-feature-card">
+                <div className="dual-feature-num">03</div>
+                <h3 className="dual-feature-title">Complete Brand Preservation</h3>
+                <p className="dual-feature-desc">
+                  Your resort maintains 100% brand identity and direct guest relations — we act as your dedicated sales arm.
+                </p>
+                <ul className="dual-feature-list">
+                  <li><Check size={13} /> Direct resort voucher confirmation</li>
+                  <li><Check size={13} /> Strict rate integrity protection</li>
+                  <li><Check size={13} /> Long-term institutional trust</li>
+                </ul>
               </div>
             </div>
-          ) : (
-            <div className="perspective-pane animate-fade-in" id="book-stays">
-              {/* Feature Grid for Bookers */}
-              <div className="perspective-grid">
-                <SpotlightCard className="perspective-card">
-                  <div className="perspective-card__icon-box">
-                    <Award size={22} />
-                  </div>
-                  <h3 className="perspective-card__title">Handpicked Luxury Properties</h3>
-                  <p className="perspective-card__desc">
-                    Book verified premier resorts — including Aamby Valley City, The Foresta Resort Mulshi,
-                    and Meritas Countryside Resort Lonavala — with complete confidence in quality and amenities.
-                  </p>
-                  <ul className="perspective-card__list">
-                    <li><CheckCircle2 size={15} /> Private pool chalets, mountain view suites &amp; scenic lawns</li>
-                    <li><CheckCircle2 size={15} /> Ideal venues for family reunions, corporate offsites &amp; celebrations</li>
-                  </ul>
-                </SpotlightCard>
 
-                <SpotlightCard className="perspective-card">
-                  <div className="perspective-card__icon-box">
-                    <PhoneCall size={22} />
-                  </div>
-                  <h3 className="perspective-card__title">Direct Coordinator Support</h3>
-                  <p className="perspective-card__desc">
-                    Skip anonymous booking portals. Talk directly with our hospitality coordinators via phone
-                    or email for customized meal plans, conference setups, and special room arrangements.
-                  </p>
-                  <ul className="perspective-card__list">
-                    <li><CheckCircle2 size={15} /> Call directly: +91 70280 27017 / +91 93708 72231</li>
-                    <li><CheckCircle2 size={15} /> Fast turnaround on group quotes and site visit coordination</li>
-                  </ul>
-                </SpotlightCard>
-
-                <SpotlightCard className="perspective-card">
-                  <div className="perspective-card__icon-box">
-                    <ShieldCheck size={22} />
-                  </div>
-                  <h3 className="perspective-card__title">Direct Rates &amp; Group Perks</h3>
-                  <p className="perspective-card__desc">
-                    Enjoy transparent pricing directly from the property management, with exclusive group discounts
-                    and bespoke add-ons tailored to your retreat or event.
-                  </p>
-                  <ul className="perspective-card__list">
-                    <li><CheckCircle2 size={15} /> No hidden platform convenience fees</li>
-                    <li><CheckCircle2 size={15} /> Dedicated assistance from booking to check-out</li>
-                  </ul>
-                </SpotlightCard>
+            <div className="dual-cta-row">
+              <button
+                type="button"
+                className="btn-g"
+                onClick={() => onOpenModal('hotel')}
+              >
+                <span>Partner Your Resort with RevBridge</span>
+              </button>
+            </div>
+          </div>
+        ) : (
+          /* Tab Content 2: For Bookers */
+          <div className="dual-content">
+            <div className="dual-card-grid">
+              <div className="dual-feature-card">
+                <div className="dual-feature-num">01</div>
+                <h3 className="dual-feature-title">Direct Negotiated Tariffs</h3>
+                <p className="dual-feature-desc">
+                  Get verified luxury property rates with zero online travel agent markup or middleman fees.
+                </p>
+                <ul className="dual-feature-list">
+                  <li><Check size={13} /> Best rate guarantee directly from resorts</li>
+                  <li><Check size={13} /> Complimentary room upgrades when available</li>
+                  <li><Check size={13} /> Direct tax invoices from the property</li>
+                </ul>
               </div>
 
-              {/* Comparison Matrix for Bookers */}
-              <div className="perspective-matrix">
-                <div className="matrix-col matrix-col--bad">
-                  <h4 className="matrix-title">Booking via Generic Online Portals</h4>
-                  <ul className="matrix-list">
-                    <li><XCircle size={16} /> Zero human assistance for group room allocation and banquet needs</li>
-                    <li><XCircle size={16} /> Impersonal customer care bots during scheduling changes</li>
-                    <li><XCircle size={16} /> Inflated third-party convenience fees and markup rates</li>
-                    <li><XCircle size={16} /> No customized corporate conference or wedding packages</li>
-                  </ul>
-                </div>
-
-                <div className="matrix-col matrix-col--good">
-                  <div className="matrix-badge">REVBRIDGE DIRECT DESK</div>
-                  <h4 className="matrix-title">Booking via RevBridge Direct Desk</h4>
-                  <ul className="matrix-list">
-                    <li><CheckCircle2 size={16} /> Dedicated hospitality coordinator managing your entire itinerary</li>
-                    <li><CheckCircle2 size={16} /> Direct telephone support (+91 7028027017 / +91 9370872231)</li>
-                    <li><CheckCircle2 size={16} /> Tailored packages for corporate offsites, banquets &amp; families</li>
-                    <li><CheckCircle2 size={16} /> Direct property rates and personalized on-ground coordination</li>
-                  </ul>
-                </div>
+              <div className="dual-feature-card">
+                <div className="dual-feature-num">02</div>
+                <h3 className="dual-feature-title">Dedicated Corporate Concierge</h3>
+                <p className="dual-feature-desc">
+                  Single point of contact for corporate offsites, banqueting, AV setups, team outings, and room allocations.
+                </p>
+                <ul className="dual-feature-list">
+                  <li><Check size={13} /> Custom offsite agenda planning</li>
+                  <li><Check size={13} /> Pre-vetted boardrooms and convention halls</li>
+                  <li><Check size={13} /> On-ground event coordination</li>
+                </ul>
               </div>
 
-              {/* Bottom CTA */}
-              <div className="perspective-bottom-cta">
-                <button type="button" className="btn-primary" onClick={() => onOpenModal('booking')}>
-                  <span>Inquire for Stays, Offsites &amp; Events</span>
-                  <ArrowRight size={16} />
-                </button>
+              <div className="dual-feature-card">
+                <div className="dual-feature-num">03</div>
+                <h3 className="dual-feature-title">Verified Luxury Guarantee</h3>
+                <p className="dual-feature-desc">
+                  Every listed resort in our alliance is personally inspected for hygiene, service standards, and culinary excellence.
+                </p>
+                <ul className="dual-feature-list">
+                  <li><Check size={13} /> Verified guest amenities &amp; safety</li>
+                  <li><Check size={13} /> 24/7 dedicated support desk</li>
+                  <li><Check size={13} /> Flexible cancellation terms for groups</li>
+                </ul>
               </div>
             </div>
-          )}
-        </div>
+
+            <div className="dual-cta-row">
+              <button
+                type="button"
+                className="btn-g"
+                onClick={() => onOpenModal('booking')}
+              >
+                <span>Inquire &amp; Book Direct Stays</span>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

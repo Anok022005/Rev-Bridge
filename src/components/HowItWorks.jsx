@@ -1,78 +1,73 @@
 import React from 'react'
-import { Search, Building2, CalendarCheck, PhoneCall, Rocket, ArrowRight, Sparkles } from 'lucide-react'
+import { CalendarCheck, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react'
 import './HowItWorks.css'
 
 const STEPS = [
   {
-    step: '01',
-    title: 'Consultation & Requirements Discovery',
-    desc: 'For hotel owners: We assess your room inventory and target ADR. For guests & companies: We note your dates, guest count, and event specifications.',
-    meta: 'Step 1: Direct Discovery Call',
-    icon: Search
+    num: '01',
+    title: 'Discover & Inquire',
+    desc: 'Browse our handpicked luxury resorts or submit your corporate group requirements through our direct booking desk.',
+    tag: 'Step 01 • Consultation'
   },
   {
-    step: '02',
-    title: 'Custom Proposal & Direct Rate Alignment',
-    desc: 'For hotel owners: We establish our dedicated sales mandate. For bookers: We provide transparent direct pricing, customized meal plans, and venue options.',
-    meta: 'Step 2: Transparent Agreement',
-    icon: Building2
+    num: '02',
+    title: 'Direct Proposal & Rates',
+    desc: 'Receive transparent, negotiated property tariffs and custom banquet agendas with 0% online agent markups.',
+    tag: 'Step 02 • Direct Contracting'
   },
   {
-    step: '03',
-    title: 'Active Sales Outreach & On-Ground Execution',
-    desc: 'For hotel owners: We pitch your property to corporate and wedding clients. For bookers: Our coordinator manages your booking and on-ground coordination.',
-    meta: 'Step 3: Seamless Experience',
-    icon: Rocket
+    num: '03',
+    title: 'Seamless Event Execution',
+    desc: 'Enjoy dedicated relationship manager support from arrival to checkout, ensuring memorable stays and flawless retreats.',
+    tag: 'Step 03 • Verified Experience'
   }
 ]
 
 export default function HowItWorks({ onOpenModal }) {
   return (
-    <section className="how-section" id="how-it-works">
-      <div className="shell">
+    <section className="sec sec-dark" id="workflow">
+      <div className="con">
         <div className="how-header">
-          <div className="badge-mono animate-float" style={{ margin: '0 auto 12px' }}>
-            <Sparkles size={13} />
-            <span>TRANSPARENT PROCESS</span>
-          </div>
-          <h2 className="section-title">A Clear Path for Partners &amp; Bookers</h2>
-          <p className="section-sub">
-            Whether partnering your property or arranging your next corporate offsite, we keep every step direct and transparent.
+          <div className="lbl c">Streamlined Process</div>
+          <h2 className="ttl" style={{ textAlign: 'center' }}>
+            How RevBridge <em>Delivers</em>
+          </h2>
+          <div className="gbar c" />
+          <p className="sub" style={{ textAlign: 'center', margin: '0 auto 40px' }}>
+            A seamless commercial gateway designed for hotel owners and corporate event planners alike.
           </p>
         </div>
 
         <div className="how-grid">
-          {STEPS.map((item) => {
-            const Icon = item.icon
-            return (
-              <div key={item.step} className="how-card">
-                <div className="how-card__top">
-                  <span className="how-card__num">{item.step}</span>
-                  <div className="how-card__icon-box">
-                    <Icon size={20} />
-                  </div>
-                </div>
-                <h3 className="how-card__title">{item.title}</h3>
-                <p className="how-card__desc">{item.desc}</p>
-                <div className="how-card__meta">{item.meta}</div>
-              </div>
-            )
-          })}
+          {STEPS.map((step) => (
+            <div key={step.num} className="how-card">
+              <div className="how-card-num">{step.num}</div>
+              <h3 className="how-card-title">{step.title}</h3>
+              <p className="how-card-desc">{step.desc}</p>
+              <div className="how-card-tag">{step.tag}</div>
+            </div>
+          ))}
         </div>
 
         <div className="how-cta-banner">
           <div className="how-cta-text">
-            <h4>Have questions or need a quick quotation?</h4>
-            <p>Call our Pune office directly at +91 70280 27017 or submit an online inquiry.</p>
+            <h4>Ready to Experience RevBridge Hospitality?</h4>
+            <p>Connect directly with our Pune sales headquarters for immediate assistance.</p>
           </div>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <a href="tel:+917028027017" className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <PhoneCall size={16} />
-              <span>Call +91 70280 27017</span>
-            </a>
-            <button type="button" className="btn-primary" onClick={() => onOpenModal('hotel')}>
-              <span>Collaborate With Us</span>
-              <ArrowRight size={16} />
+          <div className="how-cta-actions">
+            <button
+              type="button"
+              className="btn-g"
+              onClick={() => onOpenModal('hotel')}
+            >
+              <span>Partner With Us</span>
+            </button>
+            <button
+              type="button"
+              className="btn-o"
+              onClick={() => onOpenModal('booking')}
+            >
+              <span>Book A Stay</span>
             </button>
           </div>
         </div>
