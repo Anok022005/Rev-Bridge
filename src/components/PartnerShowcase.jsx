@@ -53,27 +53,28 @@ const PROPERTIES = [
   },
   {
     id: 'ivy-studios',
-    name: 'Ivy Studios',
-    tagline: 'Premium Business Hotel & Executive Serviced Suites',
+    name: 'Hotel Ivy Studios',
+    tagline: 'Contemporary Business Hotel & Suites by Lotus Group',
     location: 'Viman Nagar, Pune, Maharashtra',
-    category: 'Executive Hotel & Corporate Studios',
+    category: 'Corporate Hotel & Executive Suites',
     destTag: 'Viman Nagar',
     eventTags: ['Corporate MICE', 'Executive Stays', 'Luxury Stays'],
     images: [
-      'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80'
+      'https://hotelivystudios.com/wp-content/uploads/2023/07/1-1.png',
+      'https://hotelivystudios.com/wp-content/uploads/2023/07/2-1.png',
+      'https://hotelivystudios.com/wp-content/uploads/2023/07/3-1.png',
+      'https://hotelivystudios.com/wp-content/uploads/2023/07/4-1.png'
     ],
-    desc: 'Situated in the prime business corridor of Viman Nagar, Ivy Studios offers contemporary executive studio suites, fully equipped corporate boardrooms, gourmet dining, and 5-minute proximity to Pune International Airport and EON IT Park.',
+    desc: 'Run by the Lotus Group with over 25 years of hospitality experience, Hotel Ivy Studios offers contemporary Suite, Superior, and Executive accommodations, a 5th-floor open sky terrace, state-of-the-art conference banquets, and gourmet dining just 2 km from Pune International Airport.',
     amenities: [
-      'Executive Studio Suites with Kitchenettes',
-      'Acoustic Corporate Boardrooms & Banquet Hall',
-      'Rooftop Multi-Cuisine Restaurant & Café',
-      '5-Minute Proximity to Pune International Airport',
-      'Proximity to Phoenix Marketcity & EON IT Park'
+      'Luxury Suite, Superior & Executive Rooms',
+      '5th-Floor Open Sky Terrace for Corporate Meetings & Functions',
+      'Equipped Air-Conditioned Conference Banquet Hall',
+      'In-House Multi-Cuisine Restaurant with Breakfast Buffet',
+      '2 km from Pune Airport • Near Phoenix Market City'
     ],
-    capacity: '10 to 150 Delegates / Guests',
-    officialUrl: null
+    capacity: '10 to 200 Guests & Delegates',
+    officialUrl: 'https://hotelivystudios.com/'
   }
 ]
 

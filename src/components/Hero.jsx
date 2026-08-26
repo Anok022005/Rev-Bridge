@@ -23,12 +23,12 @@ const SLIDES = [
   },
   {
     id: 3,
-    title: 'Ivy Studios',
-    tagline: 'Premium Business Hotel & Executive Serviced Suites',
-    location: 'Viman Nagar • Pune Airport Hub, Maharashtra',
-    category: 'Corporate Stays & Executive Conferences',
-    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=2000&q=85',
-    alt: 'Ivy Studios Viman Nagar Pune'
+    title: 'Hotel Ivy Studios',
+    tagline: 'Contemporary Business Hotel & Suites • 2 km from Pune Airport',
+    location: 'Viman Nagar • Pune Business Corridor, Maharashtra',
+    category: 'Executive Corporate Stays & Terrace Banquets',
+    image: 'https://hotelivystudios.com/wp-content/uploads/2023/07/1-1.png',
+    alt: 'Hotel Ivy Studios Viman Nagar Pune'
   }
 ]
 
