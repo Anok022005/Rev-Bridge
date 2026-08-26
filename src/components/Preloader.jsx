@@ -52,34 +52,6 @@ export default function Preloader() {
         <div className="astrolabe-glow-core" />
       </div>
 
-      {/* Top Architectural Corner HUD Details */}
-      <div className="preloader-hud preloader-hud--top-left">
-        <span className="hud-label">COORDINATES</span>
-        <span className="hud-val">18.5204° N, 73.8567° E</span>
-      </div>
-
-      <div className="preloader-hud preloader-hud--top-right">
-        <span className="hud-label">HEADQUARTERS</span>
-        <span className="hud-val">PUNE • SOHRAB HALL</span>
-      </div>
-
-      {/* Bottom Architectural Corner HUD Details */}
-      <div className="preloader-hud preloader-hud--bottom-left">
-        <span className="hud-label">PORTFOLIO ALLIANCE</span>
-        <span className="hud-val">MAHARASHTRA LUXURY RETREATS</span>
-      </div>
-
-      <div className="preloader-hud preloader-hud--bottom-right">
-        <span className="hud-label">COMMERCIAL PLATFORM</span>
-        <span className="hud-val">REVBRIDGE v2.0</span>
-      </div>
-
-      {/* Corner Crosshair Registration Marks */}
-      <div className="preloader-corner preloader-corner--tl" />
-      <div className="preloader-corner preloader-corner--tr" />
-      <div className="preloader-corner preloader-corner--bl" />
-      <div className="preloader-corner preloader-corner--br" />
-
       {/* Central Interactive Content */}
       <div
         className="preloader-card"

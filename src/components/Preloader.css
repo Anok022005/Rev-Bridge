@@ -172,51 +172,6 @@
   to { transform: translate(-50%, -50%) rotate(0deg); }
 }
 
-/* Architectural HUD Details */
-.preloader-hud {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-family: var(--font-body);
-  z-index: 5;
-  pointer-events: none;
-}
-
-.hud-label {
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: var(--brand-blue);
-  text-transform: uppercase;
-}
-
-.hud-val {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--ink-faint);
-}
-
-.preloader-hud--top-left { top: 32px; left: 36px; }
-.preloader-hud--top-right { top: 32px; right: 36px; text-align: right; }
-.preloader-hud--bottom-left { bottom: 32px; left: 36px; }
-.preloader-hud--bottom-right { bottom: 32px; right: 36px; text-align: right; }
-
-/* Corner Registration Crosshairs */
-.preloader-corner {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-  z-index: 5;
-}
-
-.preloader-corner--tl { top: 20px; left: 20px; border-top: 1.5px solid rgba(30, 64, 175, 0.4); border-left: 1.5px solid rgba(30, 64, 175, 0.4); }
-.preloader-corner--tr { top: 20px; right: 20px; border-top: 1.5px solid rgba(220, 38, 38, 0.4); border-right: 1.5px solid rgba(220, 38, 38, 0.4); }
-.preloader-corner--bl { bottom: 20px; left: 20px; border-bottom: 1.5px solid rgba(220, 38, 38, 0.4); border-left: 1.5px solid rgba(220, 38, 38, 0.4); }
-.preloader-corner--br { bottom: 20px; right: 20px; border-bottom: 1.5px solid rgba(30, 64, 175, 0.4); border-right: 1.5px solid rgba(30, 64, 175, 0.4); }
-
 /* Central Card */
 .preloader-card {
   position: relative;
@@ -508,10 +463,6 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .preloader-hud {
-    display: none;
-  }
-
   .preloader-astrolabe {
     width: 480px;
     height: 480px;
@@ -559,9 +510,5 @@
 
   .preloader-enter-btn {
     padding: 13px 32px;
-  }
-
-  .preloader-corner {
-    display: none;
   }
 }
