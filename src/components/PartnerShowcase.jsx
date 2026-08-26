@@ -57,7 +57,7 @@ const PROPERTIES = [
     tagline: 'Contemporary Business Hotel & Suites by Lotus Group',
     location: 'Viman Nagar, Pune, Maharashtra',
     category: 'Corporate Hotel & Executive Suites',
-    destTag: 'Viman Nagar',
+    destTag: 'Pune',
     eventTags: ['Corporate MICE', 'Executive Stays', 'Luxury Stays'],
     images: [
       'https://hotelivystudios.com/wp-content/uploads/2023/07/1-1.png',
@@ -78,7 +78,7 @@ const PROPERTIES = [
   }
 ]
 
-const FILTERS = ['All Properties', 'Lonavala', 'Mulshi', 'Viman Nagar', 'Corporate MICE', 'Weddings']
+const FILTERS = ['All Properties', 'Lonavala', 'Mulshi', 'Pune']
 
 export default function PartnerShowcase({ onOpenModal }) {
   const [activeFilter, setActiveFilter] = useState('All Properties')
@@ -90,10 +90,7 @@ export default function PartnerShowcase({ onOpenModal }) {
 
   const filteredProperties = PROPERTIES.filter((prop) => {
     if (activeFilter === 'All Properties') return true
-    if (activeFilter === 'Lonavala' || activeFilter === 'Mulshi' || activeFilter === 'Viman Nagar') {
-      return prop.destTag === activeFilter
-    }
-    return prop.eventTags.includes(activeFilter)
+    return prop.destTag === activeFilter
   })
 
   const handlePhotoSelect = (propId, photoIdx) => {
