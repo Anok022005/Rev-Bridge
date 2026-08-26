@@ -1,0 +1,73 @@
+.cursor-wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-wrapper.is-visible {
+  opacity: 1;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--gold);
+  pointer-events: none;
+  transition: transform 0.05s linear, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 0 8px var(--gold);
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+  margin-left: -16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(184, 134, 40, 0.45);
+  background: rgba(184, 134, 40, 0.04);
+  pointer-events: none;
+  transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), margin 0.25s var(--ease-out), border-color 0.25s var(--ease-out), background-color 0.25s var(--ease-out);
+}
+
+/* Hover State */
+.cursor-dot.is-hovered {
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  margin-left: -4px;
+  background: var(--ground-deep);
+}
+
+.cursor-ring.is-hovered {
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
+  margin-left: -26px;
+  border-color: var(--gold);
+  background: rgba(184, 134, 40, 0.12);
+  backdrop-filter: blur(2px);
+}
+
+/* Click State */
+.cursor-ring.is-clicked {
+  transform: scale(0.85);
+  border-color: var(--gold-hover);
+}
+
+@media (pointer: coarse) {
+  .cursor-wrapper {
+    display: none !important;
+  }
+}

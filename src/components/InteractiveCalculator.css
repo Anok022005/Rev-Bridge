@@ -1,0 +1,199 @@
+/* ===== ROI CALCULATOR SECTION (PURE WHITE + PRISMATIC GLASS) ===== */
+.calculator-section {
+  padding: clamp(80px, 12vh, 130px) 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-section::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(184, 134, 40, 0.06) 0%, rgba(246, 238, 219, 0.25) 45%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.calculator-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Mode Switch (Frosted Glass Capsule) */
+.calc-mode-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 28px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(45, 38, 28, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.calc-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+}
+
+.calc-mode-btn.active {
+  background: #ffffff;
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow:
+    0 4px 16px rgba(45, 38, 28, 0.07),
+    0 0 0 1px rgba(184, 134, 40, 0.25);
+}
+
+/* Giant Frosted Glass Calculator Container */
+.calculator-card {
+  padding: clamp(32px, 4vw, 48px);
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow:
+    0 24px 64px rgba(45, 38, 28, 0.07),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.calc-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(32px, 4vw, 56px);
+  align-items: center;
+}
+
+/* Sliders / Inputs Side */
+.calc-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.calc-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calc-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calc-label {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.calc-val-badge {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  background: rgba(246, 238, 219, 0.7);
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(184, 134, 40, 0.25);
+}
+
+.calc-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(45, 38, 28, 0.12);
+  outline: none;
+}
+
+.calc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--ground-deep);
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.calc-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: var(--gold);
+}
+
+/* Results Output Card */
+.calc-results-card {
+  padding: 34px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid rgba(184, 134, 40, 0.35);
+  box-shadow:
+    0 16px 40px rgba(184, 134, 40, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.calc-result-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calc-metric-label {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.calc-metric-number {
+  font-size: clamp(28px, 3.5vw, 38px);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.calc-metric-number--gold {
+  color: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .calc-layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,105 @@
+.cta-section {
+  padding: clamp(60px, 10vh, 100px) 0;
+  background: #ffffff;
+}
+
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(48px, 8vw, 72px) clamp(24px, 5vw, 60px);
+  border-radius: 36px;
+  background: var(--ground-deep);
+  color: var(--ink-light);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+}
+
+/* Ambient inner glow (Royal Blue & Crimson Red) */
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.3) 0%, rgba(220, 38, 38, 0.15) 40%, transparent 65%);
+  pointer-events: none;
+}
+
+.cta-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #93c5fd;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+}
+
+.cta-card__title {
+  font-family: var(--font-body);
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  max-width: 24ch;
+  margin-bottom: 20px;
+}
+
+.cta-card__sub {
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  color: var(--ink-light-soft);
+  max-width: 62ch;
+  line-height: 1.68;
+  margin-bottom: 36px;
+}
+
+.cta-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.cta-card__btn-alt {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cta-card__btn-alt:hover {
+  background: var(--brand-blue);
+  color: #ffffff;
+  border-color: var(--brand-blue);
+}
+
+.cta-card__footer-note {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--ink-light-faint);
+  letter-spacing: 0.03em;
+}
+
+.cta-card__footer-note a {
+  color: #93c5fd !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-card__footer-note a:hover {
+  text-decoration: underline;
+}
