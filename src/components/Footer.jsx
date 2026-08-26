@@ -35,8 +35,8 @@ export default function Footer({ onOpenModal }) {
               <li><a href="#overview">Overview</a></li>
               <li><a href="#about">About Alliance</a></li>
               <li><a href="#hotels">Curated Properties</a></li>
-              <li><a href="#services">MICE &amp; Wedding Solutions</a></li>
               <li><a href="#partnership">For Hotel Owners</a></li>
+              <li><a href="#contact">Contact HQ</a></li>
               <li>
                 <button type="button" className="footer-link-btn" onClick={() => onOpenModal('hotel')}>
                   Partner With Us
@@ -47,13 +47,11 @@ export default function Footer({ onOpenModal }) {
 
           {/* Featured Properties */}
           <div className="footer-col">
-            <div className="footer-col-title">Curated Resorts</div>
+            <div className="footer-col-title">Curated Properties</div>
             <ul className="footer-links">
               <li><a href="#hotels">Aamby Valley City (Lonavala)</a></li>
               <li><a href="#hotels">The Foresta Resort (Mulshi)</a></li>
-              <li><a href="#hotels">Ivy Studios (Viman Nagar, Pune)</a></li>
-              <li><a href="#services">Corporate Offsites &amp; MICE</a></li>
-              <li><a href="#services">Destination Weddings</a></li>
+              <li><a href="#hotels">Hotel Ivy Studios (Pune)</a></li>
               <li>
                 <button type="button" className="footer-link-btn" onClick={() => onOpenModal('booking')}>
                   Direct Booking Desk

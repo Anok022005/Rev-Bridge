@@ -8,7 +8,6 @@ import PartnerMarquee from './components/PartnerMarquee'
 import AboutSection from './components/AboutSection'
 import PartnerShowcase from './components/PartnerShowcase'
 import DualPerspective from './components/DualPerspective'
-import BentoGrid from './components/BentoGrid'
 import HowItWorks from './components/HowItWorks'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
@@ -40,7 +39,6 @@ export default function App() {
         <AboutSection onOpenModal={handleOpenModal} />
         <PartnerShowcase onOpenModal={handleOpenModal} />
         <DualPerspective onOpenModal={handleOpenModal} />
-        <BentoGrid onOpenModal={handleOpenModal} />
         <HowItWorks onOpenModal={handleOpenModal} />
         <CTASection onOpenModal={handleOpenModal} />
       </main>
