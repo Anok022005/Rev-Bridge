@@ -1,53 +1,89 @@
-/* ===== ABOUT SECTION IN WHITE, RED & BLUE THEME ===== */
+/* ===== EXTRAORDINARY ABOUT SECTION ===== */
 .about-sec {
   background: #ffffff;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-sec::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 64, 175, 0.05) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(36px, 5vw, 68px);
   align-items: center;
 }
 
 .about-lead {
-  font-size: clamp(15px, 1.3vw, 17px);
+  font-size: clamp(15.5px, 1.35vw, 17.5px);
   color: var(--ink);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.75;
   margin-bottom: 14px;
+}
+
+.about-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0 28px;
+  padding: 18px 20px;
+  background: var(--ground-alt);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 16px;
+}
+
+.about-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.about-check-icon {
+  color: var(--brand-red);
+  flex-shrink: 0;
 }
 
 .about-actions {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-top: 32px;
 }
 
 /* Right Grid Cards */
 .about-right {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 .about-card {
-  background: var(--ground-alt);
-  border: 1px solid rgba(15, 23, 42, 0.08);
   padding: 28px 24px;
-  border-radius: 18px;
-  transition: all 0.3s var(--ease-out);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
-.about-card:hover {
-  background: #ffffff;
-  border-color: var(--brand-blue-border);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06), 0 0 20px rgba(30, 64, 175, 0.1);
+.about-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
 }
 
 .about-card-num {
@@ -56,12 +92,30 @@
   font-weight: 800;
   color: var(--brand-blue);
   line-height: 1;
-  margin-bottom: 12px;
+}
+
+.about-card-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--brand-blue-light);
+  border: 1px solid var(--brand-blue-border);
+  color: var(--brand-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-out);
+}
+
+.about-card:hover .about-card-icon-wrap {
+  background: var(--brand-blue);
+  color: #ffffff;
+  transform: rotate(10deg) scale(1.1);
 }
 
 .about-card-title {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 700;
   color: var(--ink);
   margin-bottom: 8px;
@@ -69,7 +123,7 @@
 }
 
 .about-card-text {
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--ink-soft);
   line-height: 1.6;
 }

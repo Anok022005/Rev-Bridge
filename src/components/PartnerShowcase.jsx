@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-import { MapPin, Users, Sparkles, Check, Phone, ArrowRight, ExternalLink, CalendarCheck } from 'lucide-react'
+import { MapPin, Users, Sparkles, Check, Phone, ArrowRight, ExternalLink, CalendarCheck, ShieldCheck } from 'lucide-react'
 import './PartnerShowcase.css'
 
 const PROPERTIES = [
   {
     id: 'aamby-valley',
     name: 'Aamby Valley City',
-    tagline: '10,000-Acre Master Planned Luxury Resort Township',
+    tagline: '10,000-Acre Master Planned Mountain Luxury Township & MICE Haven',
     location: 'Lonavala, Maharashtra',
     category: 'Luxury Township & MICE Destination',
     destTag: 'Lonavala',
-    eventTags: ['Corporate MICE', 'Weddings', 'Luxury Stays'],
     images: [
       'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80',
@@ -18,23 +17,22 @@ const PROPERTIES = [
     ],
     desc: 'India’s premier independent luxury township featuring timber chalets, Spanish cottages, 18-hole championship golf course, private airstrip, and world-class banquet convention arenas for grand offsites and weddings.',
     amenities: [
-      '18-Hole Championship Golf Course',
-      'Private Airstrip & Helipads',
-      'Water Sports & Adventure Park',
-      'Over 10 Multi-Cuisine Restaurants',
-      'Convention Arenas for up to 3,000+ Guests'
+      '18-Hole Championship Golf Course & Private Airstrip',
+      'Water Sports Arena & Adventure Activity Park',
+      'Over 10 Multi-Cuisine Gourmet Restaurants',
+      'Convention Arenas for up to 3,000+ Delegates',
+      'Timber Chalets & Spanish Lake Cottages'
     ],
-    capacity: '50 to 3,000+ Delegates',
+    capacity: '50 to 3,000+ Guests',
     officialUrl: 'https://www.aambyvalley.com'
   },
   {
     id: 'the-foresta-mulshi',
     name: 'The Foresta Resort',
-    tagline: 'Eco-Luxury Nature Sanctuary & Corporate Retreat',
+    tagline: 'Eco-Luxury Nature Sanctuary & Corporate Retreat by Mulshi Lake',
     location: 'Mulshi, Pune Outskirts, Maharashtra',
-    category: 'Nature Retreat & Private Offsites',
+    category: 'Nature Sanctuary & Executive Retreat',
     destTag: 'Mulshi',
-    eventTags: ['Corporate MICE', 'Weddings', 'Luxury Stays'],
     images: [
       'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
@@ -42,11 +40,11 @@ const PROPERTIES = [
     ],
     desc: 'Nestled amidst the lush valleys and tranquil waters of Mulshi, The Foresta Resort offers serene lake-view suites, open manicured lawns, state-of-the-art corporate boardrooms, and organic farm-to-table dining.',
     amenities: [
-      'Scenic Mulshi Lake View Cottages',
-      'Infinity Pool overlooking Western Ghats',
-      'Acoustic Corporate Boardrooms',
-      'Lawn Capacity for 500+ Guests',
-      'Curated Trekking & Wellness Trails'
+      'Panoramic Mulshi Lake View Luxury Suites',
+      'Infinity Pool overlooking Western Ghats Peaks',
+      'Acoustic Boardrooms for Leadership Offsites',
+      'Open Landscaped Lawns for 500+ Attendees',
+      'Curated Trekking & Wellness Nature Trails'
     ],
     capacity: '20 to 500 Guests',
     officialUrl: null
@@ -54,11 +52,10 @@ const PROPERTIES = [
   {
     id: 'ivy-studios',
     name: 'Hotel Ivy Studios',
-    tagline: 'Contemporary Business Hotel & Suites by Lotus Group',
+    tagline: 'Contemporary Business Hotel & Suites by Lotus Group • 2 km from Airport',
     location: 'Viman Nagar, Pune, Maharashtra',
     category: 'Corporate Hotel & Executive Suites',
     destTag: 'Pune',
-    eventTags: ['Corporate MICE', 'Executive Stays', 'Luxury Stays'],
     images: [
       'https://hotelivystudios.com/wp-content/uploads/2023/07/1-1.png',
       'https://hotelivystudios.com/wp-content/uploads/2023/07/2-1.png',
@@ -68,12 +65,12 @@ const PROPERTIES = [
     desc: 'Run by the Lotus Group with over 25 years of hospitality experience, Hotel Ivy Studios offers contemporary Suite, Superior, and Executive accommodations, a 5th-floor open sky terrace, state-of-the-art conference banquets, and gourmet dining just 2 km from Pune International Airport.',
     amenities: [
       'Luxury Suite, Superior & Executive Rooms',
-      '5th-Floor Open Sky Terrace for Corporate Meetings & Functions',
+      '5th-Floor Open Sky Terrace for Private & Corporate Events',
       'Equipped Air-Conditioned Conference Banquet Hall',
-      'In-House Multi-Cuisine Restaurant with Breakfast Buffet',
+      'In-House Multi-Cuisine Restaurant with Buffet Dining',
       '2 km from Pune Airport • Near Phoenix Market City'
     ],
-    capacity: '10 to 200 Guests & Delegates',
+    capacity: '10 to 200 Guests',
     officialUrl: 'https://hotelivystudios.com/'
   }
 ]
@@ -108,11 +105,11 @@ export default function PartnerShowcase({ onOpenModal }) {
           </h2>
           <div className="gbar c" />
           <p className="sub" style={{ textAlign: 'center', margin: '0 auto 36px' }}>
-            Explore our curated collection of verified independent luxury resorts across Maharashtra.
-            Book directly through our Pune commercial desk with zero broker markup.
+            Explore our verified collection of independent luxury resorts and business suites across Maharashtra.
+            Book directly through our Pune sales desk with guaranteed zero intermediary markup.
           </p>
 
-          {/* Filter Bar */}
+          {/* Filter Bar with Smooth Pill Indicator */}
           <div className="hotels-filter-bar">
             {FILTERS.map((f) => (
               <button
@@ -134,7 +131,7 @@ export default function PartnerShowcase({ onOpenModal }) {
             const currentImgUrl = prop.images[currentImgIdx]
 
             return (
-              <article key={prop.id} className="hotel-card">
+              <article key={prop.id} className="hotel-card glass-card">
                 {/* Top Image Box */}
                 <div className="hotel-img-box">
                   <img src={currentImgUrl} alt={prop.name} className="hotel-img" />
@@ -184,16 +181,16 @@ export default function PartnerShowcase({ onOpenModal }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hotel-ext-link"
-                        title="Official Resort Portal"
+                        title="Official Property Website"
                       >
-                        <ExternalLink size={14} />
+                        <ExternalLink size={15} />
                       </a>
                     )}
                   </div>
 
                   <p className="hotel-desc">{prop.desc}</p>
 
-                  <div className="hotel-amenities-title">Resort Key Highlights</div>
+                  <div className="hotel-amenities-title">Resort Highlights</div>
                   <ul className="hotel-amenities-list">
                     {prop.amenities.map((amenity, i) => (
                       <li key={i}>
@@ -210,7 +207,7 @@ export default function PartnerShowcase({ onOpenModal }) {
                       className="btn-book"
                       onClick={() => onOpenModal('booking')}
                     >
-                      <CalendarCheck size={13} />
+                      <CalendarCheck size={14} />
                       <span>Book Direct Rates</span>
                     </button>
                     <a

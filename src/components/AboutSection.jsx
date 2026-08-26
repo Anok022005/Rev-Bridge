@@ -1,5 +1,5 @@
 import React from 'react'
-import { Building2, CalendarCheck, ShieldCheck, Award, ArrowRight } from 'lucide-react'
+import { Building2, CalendarCheck, ShieldCheck, Award, TrendingUp, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react'
 import './AboutSection.css'
 
 export default function AboutSection({ onOpenModal }) {
@@ -9,22 +9,40 @@ export default function AboutSection({ onOpenModal }) {
         <div className="about-grid">
           {/* Left Column */}
           <div className="about-left">
-            <div className="lbl">About RevBridge</div>
+            <div className="lbl">About The Alliance</div>
             <h2 className="ttl">
               Think Hospitality. <br />
               <em>Think RevBridge.</em>
             </h2>
             <div className="gbar" />
+
             <p className="about-lead">
-              RevBridge is a premier hotel sales leadership alliance based in Pune, Maharashtra. We bridge
-              handpicked luxury resorts, serene mountain sanctuaries, and independent hotel brands with high-value
-              corporate offsites, grand destination weddings, and direct leisure travelers.
+              RevBridge is India's dedicated hotel sales leadership alliance based in Pune, Maharashtra.
+              We represent handpicked independent luxury resorts, mountain sanctuaries, and corporate business hotels
+              with direct corporate offsites, destination weddings, and leisure guests.
             </p>
+
             <p className="sub">
               By acting as an integrated commercial sales extension for independent properties, we eliminate fixed
-              corporate sales payrolls for hotel owners while offering corporate bookers and guests direct-from-property
-              rates with zero intermediary markups.
+              corporate sales overheads for hotel owners while offering event planners and guests guaranteed
+              direct-from-property tariffs with zero intermediary markups.
             </p>
+
+            {/* Feature Checklist */}
+            <div className="about-checklist">
+              <div className="about-check-item">
+                <CheckCircle2 size={16} className="about-check-icon" />
+                <span>Dedicated Regional B2B Corporate Sales Presence</span>
+              </div>
+              <div className="about-check-item">
+                <CheckCircle2 size={16} className="about-check-icon" />
+                <span>100% Direct Property Vouchers &amp; Billing</span>
+              </div>
+              <div className="about-check-item">
+                <CheckCircle2 size={16} className="about-check-icon" />
+                <span>Zero Broker Commission / Zero Middleman Markup</span>
+              </div>
+            </div>
 
             <div className="about-actions">
               <button
@@ -32,6 +50,7 @@ export default function AboutSection({ onOpenModal }) {
                 className="btn-g"
                 onClick={() => onOpenModal('hotel')}
               >
+                <Building2 size={15} />
                 <span>For Hotels: Partner With Us</span>
               </button>
               <button
@@ -39,42 +58,63 @@ export default function AboutSection({ onOpenModal }) {
                 className="btn-o"
                 onClick={() => onOpenModal('booking')}
               >
+                <CalendarCheck size={15} />
                 <span>For Guests: Direct Booking</span>
               </button>
             </div>
           </div>
 
-          {/* Right Column: 4 Stat/Pillar Cards */}
+          {/* Right Column: 4 Glowing Stat Cards */}
           <div className="about-right">
-            <div className="about-card">
-              <div className="about-card-num">01</div>
+            <div className="about-card glass-card">
+              <div className="about-card-top">
+                <span className="about-card-num">01</span>
+                <div className="about-card-icon-wrap">
+                  <TrendingUp size={20} />
+                </div>
+              </div>
               <div className="about-card-title">Commercial Representation</div>
               <p className="about-card-text">
-                Dedicated regional sales representation across Pune, Mumbai, and feeder markets for luxury resorts.
+                Active regional corporate contracting and MICE travel desk representation across Pune, Mumbai, and feeder markets.
               </p>
             </div>
 
-            <div className="about-card">
-              <div className="about-card-num">02</div>
+            <div className="about-card glass-card">
+              <div className="about-card-top">
+                <span className="about-card-num">02</span>
+                <div className="about-card-icon-wrap">
+                  <ShieldCheck size={20} />
+                </div>
+              </div>
               <div className="about-card-title">Direct Booking Desk</div>
               <p className="about-card-text">
-                Instant inquiry coordination, verified luxury tariffs, and bespoke itinerary planning for corporate groups.
+                Direct negotiated resort tariffs, custom banquet agendas, and rapid inquiry fulfillment within 2 hours.
               </p>
             </div>
 
-            <div className="about-card">
-              <div className="about-card-num">03</div>
-              <div className="about-card-title">Curated Destinations</div>
+            <div className="about-card glass-card">
+              <div className="about-card-top">
+                <span className="about-card-num">03</span>
+                <div className="about-card-icon-wrap">
+                  <Award size={20} />
+                </div>
+              </div>
+              <div className="about-card-title">Verified Luxury Portfolio</div>
               <p className="about-card-text">
-                Handpicked verified properties in Lonavala, Mulshi, Khandala, and scenic Western Ghats corridors.
+                Handpicked, quality-inspected properties across Lonavala, Mulshi, and Pune business corridors.
               </p>
             </div>
 
-            <div className="about-card">
-              <div className="about-card-num">04</div>
+            <div className="about-card glass-card">
+              <div className="about-card-top">
+                <span className="about-card-num">04</span>
+                <div className="about-card-icon-wrap">
+                  <Sparkles size={20} />
+                </div>
+              </div>
               <div className="about-card-title">Zero Broker Markup</div>
               <p className="about-card-text">
-                Transparent billing, direct resort vouchers, and dedicated relationship manager from inquiry to checkout.
+                Direct resort vouchers, transparent contracts, and dedicated relationship manager from inquiry to checkout.
               </p>
             </div>
           </div>
