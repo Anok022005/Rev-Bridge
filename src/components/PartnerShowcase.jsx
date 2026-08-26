@@ -52,44 +52,44 @@ const PROPERTIES = [
     officialUrl: null
   },
   {
-    id: 'meritas-countryside',
-    name: 'Meritas Countryside Resort',
-    tagline: 'Boutique Mountain Suites & Celebration Lawns',
-    location: 'Lonavala, Maharashtra',
-    category: 'Celebration Stays & Family Holidays',
-    destTag: 'Lonavala',
-    eventTags: ['Weddings', 'Corporate MICE', 'Luxury Stays'],
+    id: 'ivy-studios',
+    name: 'Ivy Studios',
+    tagline: 'Premium Business Hotel & Executive Serviced Suites',
+    location: 'Viman Nagar, Pune, Maharashtra',
+    category: 'Executive Hotel & Corporate Studios',
+    destTag: 'Viman Nagar',
+    eventTags: ['Corporate MICE', 'Executive Stays', 'Luxury Stays'],
     images: [
-      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80'
     ],
-    desc: 'A charming boutique resort in the heart of Lonavala with landscaped garden lawns, private balconies with valley vistas, poolside banquet decks, and quick highway accessibility from Mumbai and Pune.',
+    desc: 'Situated in the prime business corridor of Viman Nagar, Ivy Studios offers contemporary executive studio suites, fully equipped corporate boardrooms, gourmet dining, and 5-minute proximity to Pune International Airport and EON IT Park.',
     amenities: [
-      'Boutique Family & Executive Suites',
-      'Lush Landscaped Wedding Lawns',
-      'Multi-Cuisine Pure Veg & Non-Veg Dining',
-      'Poolside Sundeck & Lounge',
-      'Proximity to Lonavala Express Highway'
+      'Executive Studio Suites with Kitchenettes',
+      'Acoustic Corporate Boardrooms & Banquet Hall',
+      'Rooftop Multi-Cuisine Restaurant & Café',
+      '5-Minute Proximity to Pune International Airport',
+      'Proximity to Phoenix Marketcity & EON IT Park'
     ],
-    capacity: '15 to 350 Guests',
+    capacity: '10 to 150 Delegates / Guests',
     officialUrl: null
   }
 ]
 
-const FILTERS = ['All Properties', 'Lonavala', 'Mulshi', 'Corporate MICE', 'Weddings']
+const FILTERS = ['All Properties', 'Lonavala', 'Mulshi', 'Viman Nagar', 'Corporate MICE', 'Weddings']
 
 export default function PartnerShowcase({ onOpenModal }) {
   const [activeFilter, setActiveFilter] = useState('All Properties')
   const [activePhotoIdx, setActivePhotoIdx] = useState({
     'aamby-valley': 0,
     'the-foresta-mulshi': 0,
-    'meritas-countryside': 0
+    'ivy-studios': 0
   })
 
   const filteredProperties = PROPERTIES.filter((prop) => {
     if (activeFilter === 'All Properties') return true
-    if (activeFilter === 'Lonavala' || activeFilter === 'Mulshi') {
+    if (activeFilter === 'Lonavala' || activeFilter === 'Mulshi' || activeFilter === 'Viman Nagar') {
       return prop.destTag === activeFilter
     }
     return prop.eventTags.includes(activeFilter)

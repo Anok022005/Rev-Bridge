@@ -51,7 +51,7 @@ export default function Footer({ onOpenModal }) {
             <ul className="footer-links">
               <li><a href="#hotels">Aamby Valley City (Lonavala)</a></li>
               <li><a href="#hotels">The Foresta Resort (Mulshi)</a></li>
-              <li><a href="#hotels">Meritas Countryside (Lonavala)</a></li>
+              <li><a href="#hotels">Ivy Studios (Viman Nagar, Pune)</a></li>
               <li><a href="#services">Corporate Offsites &amp; MICE</a></li>
               <li><a href="#services">Destination Weddings</a></li>
               <li>

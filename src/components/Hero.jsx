@@ -23,12 +23,12 @@ const SLIDES = [
   },
   {
     id: 3,
-    title: 'Meritas Countryside',
-    tagline: 'Boutique Mountain Suites & Event Lawns',
-    location: 'Lonavala • Khandala Valley, Maharashtra',
-    category: 'Celebration Stays & Family Holidays',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=85',
-    alt: 'Meritas Countryside Resort'
+    title: 'Ivy Studios',
+    tagline: 'Premium Business Hotel & Executive Serviced Suites',
+    location: 'Viman Nagar • Pune Airport Hub, Maharashtra',
+    category: 'Corporate Stays & Executive Conferences',
+    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=2000&q=85',
+    alt: 'Ivy Studios Viman Nagar Pune'
   }
 ]
 
