@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ArrowRight, Sparkles, Compass, ShieldCheck } from 'lucide-react'
+import logoImg from '../assets/logo.jpg'
 import './Preloader.css'
 
 export default function Preloader() {
@@ -91,7 +92,7 @@ export default function Preloader() {
           <div className="preloader-logo-ring-pulse" />
           <div className="preloader-logo-inner">
             <img
-              src="/logo.jpg"
+              src={logoImg}
               alt="RevBridge Official Seal"
               className="preloader-logo-img"
             />

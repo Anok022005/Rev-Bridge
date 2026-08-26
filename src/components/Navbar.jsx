@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ArrowUpRight, Menu, X, CalendarCheck, Building2 } from 'lucide-react'
+import logoImg from '../assets/logo.jpg'
 import './Navbar.css'
 
 const NAV_LINKS = [
@@ -36,7 +37,7 @@ export default function Navbar({ onOpenModal }) {
         {/* Unified Prismatic Glass Capsule: Logo + RevBridge + All Nav Links */}
         <div className="nav__prismatic-capsule">
           <a href="#top" className="nav__brand">
-            <img src="/logo.jpg" alt="RevBridge Logo" className="nav__brand-logo" />
+            <img src={logoImg} alt="RevBridge Logo" className="nav__brand-logo" />
             <span className="nav__brand-text">REVBRIDGE</span>
           </a>
 

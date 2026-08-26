@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ArrowRight, Check, Mail, Phone, MapPin } from 'lucide-react'
+import logoImg from '../assets/logo.jpg'
 import './Footer.css'
 
 export default function Footer({ onOpenModal }) {
@@ -19,7 +20,7 @@ export default function Footer({ onOpenModal }) {
           {/* Brand Col */}
           <div className="footer__brand-col">
             <div className="footer__brand">
-              <img src="/logo.jpg" alt="RevBridge Logo" className="footer__brand-logo" />
+              <img src={logoImg} alt="RevBridge Logo" className="footer__brand-logo" />
               <span className="footer__brand-text">REVBRIDGE</span>
             </div>
             <p className="footer__tagline">
