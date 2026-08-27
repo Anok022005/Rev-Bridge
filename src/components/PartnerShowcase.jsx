@@ -204,16 +204,11 @@ export default function PartnerShowcase({ onOpenModal }) {
                   <div className="hotel-card-actions">
                     <div className="hotel-verified-badge">
                       <ShieldCheck size={14} className="amenity-check" />
-                      <span>Direct Alliance Rate</span>
+                      <span>Verified Alliance Property</span>
                     </div>
-                    <a
-                      href="tel:+917028027017"
-                      className="hotel-call-link"
-                      title="Direct Concierge Line"
-                    >
-                      <Phone size={13} />
-                      <span>+91 70280 27017</span>
-                    </a>
+                    <div className="hotel-rate-pill">
+                      <span>0% Broker Markup</span>
+                    </div>
                   </div>
                 </div>
               </article>
