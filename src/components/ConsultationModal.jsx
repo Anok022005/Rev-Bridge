@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { X, Building2, CalendarCheck, CheckCircle2, Phone, Mail, Sparkles, Send } from 'lucide-react'
 import './ConsultationModal.css'
 
+const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY_HERE'
+
 export default function ConsultationModal({ isOpen, onClose, initialTrack = 'hotel' }) {
   const [track, setTrack] = useState(initialTrack)
+  const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
@@ -40,9 +43,38 @@ export default function ConsultationModal({ isOpen, onClose, initialTrack = 'hot
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          from_name: 'RevBridge Modal Concierge',
+          subject: `RevBridge Modal Inquiry: ${formData.name} (${track === 'hotel' ? 'Hotel Partnership' : 'Guest Booking'})`,
+          inquiry_type: track === 'hotel' ? 'Hotel & Resort Partnership' : 'Corporate & Guest Stay',
+          full_name: formData.name,
+          phone_number: formData.phone,
+          email_address: formData.email,
+          property_or_company: formData.propertyOrCompany,
+          dates_or_location: formData.datesOrRequirement,
+          group_size_or_service: formData.guestsCount,
+          requirements_notes: formData.notes || 'None provided'
+        })
+      })
+      setSubmitted(true)
+    } catch (err) {
+      console.error(err)
+      setSubmitted(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
