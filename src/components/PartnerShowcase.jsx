@@ -200,16 +200,12 @@ export default function PartnerShowcase({ onOpenModal }) {
                     ))}
                   </ul>
 
-                  {/* Card Bottom Actions */}
+                  {/* Card Bottom Meta */}
                   <div className="hotel-card-actions">
-                    <button
-                      type="button"
-                      className="btn-book"
-                      onClick={() => onOpenModal('booking')}
-                    >
-                      <CalendarCheck size={14} />
-                      <span>Book Direct Rates</span>
-                    </button>
+                    <div className="hotel-verified-badge">
+                      <ShieldCheck size={14} className="amenity-check" />
+                      <span>Direct Alliance Rate</span>
+                    </div>
                     <a
                       href="tel:+917028027017"
                       className="hotel-call-link"

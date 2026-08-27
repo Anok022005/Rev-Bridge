@@ -59,29 +59,6 @@ export default function HowItWorks({ onOpenModal }) {
             )
           })}
         </div>
-
-        <div className="how-cta-banner">
-          <div className="how-cta-text">
-            <h4>Ready to Experience RevBridge Hospitality?</h4>
-            <p>Connect directly with our Pune sales headquarters for immediate assistance.</p>
-          </div>
-          <div className="how-cta-actions">
-            <button
-              type="button"
-              className="btn-g"
-              onClick={() => onOpenModal('hotel')}
-            >
-              <span>Partner With Us</span>
-            </button>
-            <button
-              type="button"
-              className="btn-o"
-              onClick={() => onOpenModal('booking')}
-            >
-              <span>Book A Stay</span>
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   )

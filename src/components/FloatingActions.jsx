@@ -1,18 +1,9 @@
 import React from 'react'
-import { MessageCircle, PhoneCall } from 'lucide-react'
 import './FloatingActions.css'
 
-export default function FloatingActions({ onOpenModal }) {
+export default function FloatingActions() {
   return (
     <div className="fbar">
-      <button
-        type="button"
-        className="fbtn2"
-        onClick={() => onOpenModal('booking')}
-      >
-        <span>Direct Booking Desk</span>
-      </button>
-
       <a
         href="https://wa.me/917028027017?text=Hi%20RevBridge%2C%20I%20would%20like%20to%20inquire%20about%20partner%20resorts%20and%20direct%20bookings."
         target="_blank"

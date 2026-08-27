@@ -44,24 +44,6 @@ export default function AboutSection({ onOpenModal }) {
               </div>
             </div>
 
-            <div className="about-actions">
-              <button
-                type="button"
-                className="btn-g"
-                onClick={() => onOpenModal('hotel')}
-              >
-                <Building2 size={15} />
-                <span>For Hotels: Partner With Us</span>
-              </button>
-              <button
-                type="button"
-                className="btn-o"
-                onClick={() => onOpenModal('booking')}
-              >
-                <CalendarCheck size={15} />
-                <span>For Guests: Direct Booking</span>
-              </button>
-            </div>
           </div>
 
           {/* Right Column: 4 Glowing Stat Cards */}

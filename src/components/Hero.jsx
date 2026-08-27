@@ -106,25 +106,6 @@ export default function Hero({ onOpenModal }) {
             </div>
 
             <p className="stagline">{slide.tagline}</p>
-
-            <div className="sbtns">
-              <button
-                type="button"
-                className="btn-g"
-                onClick={() => onOpenModal('booking')}
-              >
-                <CalendarCheck size={16} />
-                <span>Book Direct Resort Rates</span>
-              </button>
-              <button
-                type="button"
-                className="btn-o"
-                onClick={() => onOpenModal('hotel')}
-              >
-                <Building2 size={16} />
-                <span>Hotels: Partner With Us</span>
-              </button>
-            </div>
           </div>
         </div>
       ))}

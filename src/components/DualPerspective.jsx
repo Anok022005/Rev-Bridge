@@ -83,16 +83,6 @@ export default function DualPerspective({ onOpenModal }) {
                 </ul>
               </div>
             </div>
-
-            <div className="dual-cta-row">
-              <button
-                type="button"
-                className="btn-g"
-                onClick={() => onOpenModal('hotel')}
-              >
-                <span>Partner Your Resort with RevBridge</span>
-              </button>
-            </div>
           </div>
         ) : (
           /* Tab Content 2: For Bookers */
@@ -136,16 +126,6 @@ export default function DualPerspective({ onOpenModal }) {
                   <li><Check size={13} /> Flexible cancellation terms for groups</li>
                 </ul>
               </div>
-            </div>
-
-            <div className="dual-cta-row">
-              <button
-                type="button"
-                className="btn-g"
-                onClick={() => onOpenModal('booking')}
-              >
-                <span>Inquire &amp; Book Direct Stays</span>
-              </button>
             </div>
           </div>
         )}
