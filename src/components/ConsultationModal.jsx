@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { X, Building2, CalendarCheck, CheckCircle2, Phone, Mail, Sparkles, Send } from 'lucide-react'
 import './ConsultationModal.css'
 
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY_HERE'
+const WEB3FORMS_ACCESS_KEY = 'd114fb52-db69-46af-8c88-79a9c8be4284'
 
 export default function ConsultationModal({ isOpen, onClose, initialTrack = 'hotel' }) {
   const [track, setTrack] = useState(initialTrack)

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Phone, Mail, MapPin, Building2, CalendarCheck, Send, CheckCircle2, Loader2, Sparkles, ShieldCheck } from 'lucide-react'
 import './CTASection.css'
 
-// Web3Forms Endpoint Key (Replace with your free key from https://web3forms.com/)
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY_HERE'
+// Web3Forms Live Endpoint Key
+const WEB3FORMS_ACCESS_KEY = 'd114fb52-db69-46af-8c88-79a9c8be4284'
 
 export default function CTASection() {
   const [activeTab, setActiveTab] = useState('hotel') // 'hotel' or 'guest'
