@@ -40,6 +40,7 @@ export default function Navbar({ onOpenModal }) {
           <li><a href="#overview">Overview</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#hotels">Properties</a></li>
+          <li><a href="#upcoming">Upcoming</a></li>
           <li><a href="#partnership">For Hotels</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -81,6 +82,7 @@ export default function Navbar({ onOpenModal }) {
         <a href="#overview" onClick={() => setMobileOpen(false)}>Overview</a>
         <a href="#about" onClick={() => setMobileOpen(false)}>About Us</a>
         <a href="#hotels" onClick={() => setMobileOpen(false)}>Curated Properties</a>
+        <a href="#upcoming" onClick={() => setMobileOpen(false)}>Upcoming</a>
         <a href="#partnership" onClick={() => setMobileOpen(false)}>For Hotel Owners</a>
         <a href="#contact" onClick={() => setMobileOpen(false)}>Contact HQ</a>
         <div className="mob-btns">

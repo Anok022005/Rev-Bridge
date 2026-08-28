@@ -340,6 +340,9 @@ export default function CTASection() {
                         <option value="Aamby Valley City (Lonavala)">Aamby Valley City (Lonavala)</option>
                         <option value="The Foresta Resort (Mulshi)">The Foresta Resort (Mulshi)</option>
                         <option value="Hotel Lotus Ivy (Pune)">Hotel Lotus Ivy (Pune)</option>
+                        <option value="Karjat (Upcoming Riverside Resort)">Karjat (Upcoming Riverside Retreat)</option>
+                        <option value="Goa (Upcoming Beachfront Resort)">Goa (Upcoming Beachfront Resort)</option>
+                        <option value="Mahabaleshwar (Upcoming Mountain Estate)">Mahabaleshwar (Upcoming Mountain Estate)</option>
                         <option value="Recommend Best Destination">Recommend Best Destination for My Group</option>
                       </select>
                     </div>

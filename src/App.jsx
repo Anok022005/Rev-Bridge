@@ -7,6 +7,7 @@ import Hero from './components/Hero'
 import PartnerMarquee from './components/PartnerMarquee'
 import AboutSection from './components/AboutSection'
 import PartnerShowcase from './components/PartnerShowcase'
+import UpcomingProperties from './components/UpcomingProperties'
 import DualPerspective from './components/DualPerspective'
 import HowItWorks from './components/HowItWorks'
 import CTASection from './components/CTASection'
@@ -38,6 +39,7 @@ export default function App() {
         <PartnerMarquee />
         <AboutSection onOpenModal={handleOpenModal} />
         <PartnerShowcase onOpenModal={handleOpenModal} />
+        <UpcomingProperties />
         <DualPerspective onOpenModal={handleOpenModal} />
         <HowItWorks onOpenModal={handleOpenModal} />
         <CTASection onOpenModal={handleOpenModal} />
