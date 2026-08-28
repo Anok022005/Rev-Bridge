@@ -51,7 +51,7 @@ export default function Footer({ onOpenModal }) {
             <ul className="footer-links">
               <li><a href="#hotels">Aamby Valley City (Lonavala)</a></li>
               <li><a href="#hotels">The Foresta Resort (Mulshi)</a></li>
-              <li><a href="#hotels">Hotel Ivy Studios (Pune)</a></li>
+              <li><a href="#hotels">Hotel Lotus Ivy (Pune)</a></li>
               <li>
                 <button type="button" className="footer-link-btn" onClick={() => onOpenModal('booking')}>
                   Direct Booking Desk

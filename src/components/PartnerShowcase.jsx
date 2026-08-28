@@ -50,8 +50,8 @@ const PROPERTIES = [
     officialUrl: null
   },
   {
-    id: 'ivy-studios',
-    name: 'Hotel Ivy Studios',
+    id: 'lotus-ivy',
+    name: 'Hotel Lotus Ivy',
     tagline: 'Contemporary Business Hotel & Suites by Lotus Group • 2 km from Airport',
     location: 'Viman Nagar, Pune, Maharashtra',
     category: 'Corporate Hotel & Executive Suites',
@@ -62,7 +62,7 @@ const PROPERTIES = [
       'https://hotelivystudios.com/wp-content/uploads/2023/07/3-1.png',
       'https://hotelivystudios.com/wp-content/uploads/2023/07/4-1.png'
     ],
-    desc: 'Run by the Lotus Group with over 25 years of hospitality experience, Hotel Ivy Studios offers contemporary Suite, Superior, and Executive accommodations, a 5th-floor open sky terrace, state-of-the-art conference banquets, and gourmet dining just 2 km from Pune International Airport.',
+    desc: 'Run by the Lotus Group with over 25 years of hospitality experience, Hotel Lotus Ivy offers contemporary Suite, Superior, and Executive accommodations, a 5th-floor open sky terrace, state-of-the-art conference banquets, and gourmet dining just 2 km from Pune International Airport.',
     amenities: [
       'Luxury Suite, Superior & Executive Rooms',
       '5th-Floor Open Sky Terrace for Private & Corporate Events',
@@ -82,7 +82,7 @@ export default function PartnerShowcase({ onOpenModal }) {
   const [activePhotoIdx, setActivePhotoIdx] = useState({
     'aamby-valley': 0,
     'the-foresta-mulshi': 0,
-    'ivy-studios': 0
+    'lotus-ivy': 0
   })
 
   const filteredProperties = PROPERTIES.filter((prop) => {

@@ -25,7 +25,7 @@ const SLIDES = [
   },
   {
     id: 3,
-    title: 'Hotel Ivy Studios',
+    title: 'Hotel Lotus Ivy',
     tagline: 'Contemporary Business Hotel & Suites • 2 km from Pune Airport',
     location: 'Viman Nagar • Pune Business Corridor, Maharashtra',
     category: 'Corporate Hotel & Executive Serviced Suites',
